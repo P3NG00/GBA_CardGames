@@ -6,6 +6,7 @@
 #include "bn_sprite_ptr.h"
 
 #include "bn_sprite_items_card_milage_25.h"
+#include "bn_sprite_items_card_milage_50.h"
 
 #include "cg_card_type.hpp"
 
