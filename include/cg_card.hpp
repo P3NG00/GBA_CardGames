@@ -16,6 +16,7 @@
 class card
 {
     bn::optional<bn::sprite_ptr> _sprite;
+    card_type _cardtype;
 public:
     card(card_type cardtype, bn::fixed x, bn::fixed y);
 };

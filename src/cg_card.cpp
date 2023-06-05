@@ -1,8 +1,9 @@
 #include "cg_card.hpp"
 
-#define LOAD_SPRITE(sprite_name) _sprite = bn::sprite_items::sprite_name.create_sprite(0, 0)
+#define LOAD_SPRITE(sprite_name) _sprite = bn::sprite_items::sprite_name.create_sprite(x, y)
 
-card::card(card_type cardtype, bn::fixed x, bn::fixed y)
+card::card(card_type cardtype, bn::fixed x, bn::fixed y) :
+    _cardtype(cardtype)
 {
     switch (cardtype)
     {
@@ -13,5 +14,4 @@ card::card(card_type cardtype, bn::fixed x, bn::fixed y)
         case card_type::Milage200: LOAD_SPRITE(card_milage_200); break;
         default: return;
     }
-    _sprite.value().set_position(x, y);
 }
