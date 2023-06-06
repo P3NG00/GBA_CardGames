@@ -33,3 +33,8 @@ card::card(card_type cardtype, bn::fixed x, bn::fixed y) :
         default: return;
     }
 }
+
+void card::set_position(bn::fixed x, bn::fixed y)
+{
+    _sprite.value().set_position(x, y);
+}

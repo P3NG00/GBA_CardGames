@@ -11,7 +11,7 @@
 class scene_game
 {
     bn::regular_bg_ptr _background;
-    card_pile<16> _cardpile;
+    card_pile<106> _pile_draw;
 public:
     scene_game();
     void update();
