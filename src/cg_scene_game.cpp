@@ -54,9 +54,5 @@ scene_game::scene_game() :
 void scene_game::update()
 {
     // TODO handle game logic
-    if (bn::keypad::start_pressed())
-    {
-        _pile_draw.shuffle(_random_obj);
-        _pile_draw.update_card_positions();
-    }
+    // TODO handle input
 }
