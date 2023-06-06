@@ -13,19 +13,19 @@ enum card_type
     HazardStop,
     HazardSpeedLimit,
     HazardOutOfGas,
-    HazardFlatTire,
-    HazardAccident,
+    // TODO HazardFlatTire,
+    // TODO HazardAccident,
     // remedy cards
     RemedyGo,
-    RemedyEndOfLimit,
+    // TODO RemedyEndOfLimit,
     RemedyGasoline,
-    RemedySpareTire,
-    RemedyRepairs,
+    // TODO RemedySpareTire,
+    // TODO RemedyRepairs,
     // safety cards
-    SafetyRightOfWay,
-    SafetyExtraTank,
-    SafetyPunctureProof,
-    SafetyDrivingAce,
+    // TODO SafetyRightOfWay,
+    // TODO SafetyExtraTank,
+    // TODO SafetyPunctureProof,
+    // TODO SafetyDrivingAce,
 };
 
 #endif
