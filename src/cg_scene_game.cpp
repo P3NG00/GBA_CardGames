@@ -51,6 +51,11 @@ scene_game::scene_game() :
         _pile_draw.deal_card_to(_pile_hand);
 }
 
+bool scene_game::done()
+{
+    return false;
+}
+
 void scene_game::update()
 {
     // TODO handle game logic

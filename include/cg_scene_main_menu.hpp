@@ -8,14 +8,17 @@
 
 #include "common_variable_8x16_sprite_font.h"
 
+#include "cg_scene.hpp"
+
 // TODO abstract scene class
-class scene_main_menu
+class scene_main_menu : public scene
 {
     bn::sprite_text_generator _text_generator = bn::sprite_text_generator(common::variable_8x16_sprite_font);
     bn::vector<bn::sprite_ptr, 20> _text_sprites = bn::vector<bn::sprite_ptr, 20>();
+protected:
+    bool done() override;
 public:
     scene_main_menu();
-    bool done();
 };
 
 #endif
