@@ -16,15 +16,17 @@ template<int Size>
 class card_pile
 {
     bn::fixed _PileCardOffset = 8;
-    bn::random _random_obj = bn::random();
     bn::vector<bn::optional<card>, Size> _cards = bn::vector<bn::optional<card>, Size>();
     bn::fixed _x, _y;
+    bool _active;
 public:
-    card_pile(bn::fixed x, bn::fixed y);
+    card_pile(bn::fixed x, bn::fixed y, bool active = true);
     void add_card(card_type cardtype);
     void clear();
-    void shuffle();
+    void shuffle(bn::random& random_obj);
     void update_card_positions();
+    void set_active(bool active);
+    bool is_active();
     int count();
 };
 

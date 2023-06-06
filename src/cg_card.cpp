@@ -38,3 +38,13 @@ void card::set_position(bn::fixed x, bn::fixed y)
 {
     _sprite.value().set_position(x, y);
 }
+
+void card::set_active(bool active)
+{
+    _sprite.value().set_visible(active);
+}
+
+bool card::is_active()
+{
+    return _sprite.value().visible();
+}

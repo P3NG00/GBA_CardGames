@@ -38,6 +38,8 @@ class card
 public:
     card(card_type cardtype, bn::fixed x, bn::fixed y);
     void set_position(bn::fixed x, bn::fixed y);
+    void set_active(bool active);
+    bool is_active();
 };
 
 #endif

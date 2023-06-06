@@ -2,7 +2,7 @@
 
 scene_game::scene_game() :
     _background(bn::regular_bg_items::background.create_bg(0, 0)),
-    _pile_draw(0, -72)
+    _pile_draw(0, -72, false)
 {
     // add cards to draw pile
     int i;
@@ -50,7 +50,7 @@ void scene_game::update()
     // TODO handle game logic
     if (bn::keypad::start_pressed())
     {
-        _pile_draw.shuffle();
+        _pile_draw.shuffle(_random_obj);
         _pile_draw.update_card_positions();
     }
 }
