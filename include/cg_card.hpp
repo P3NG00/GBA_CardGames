@@ -38,10 +38,11 @@ class card
     card_type _cardtype;
 public:
     card(card_type cardtype, bn::fixed_point position);
-    void set_position(bn::fixed_point position);
-    void set_active(bool active);
+    bn::fixed_point get_position();
     card_type get_card_type();
     bool is_active();
+    void set_position(bn::fixed_point position);
+    void set_active(bool active);
 };
 
 #endif

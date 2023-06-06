@@ -53,7 +53,25 @@ scene_game::scene_game(bn::random& random_obj)
 
 void scene_game::update(bn::random& random_obj)
 {
+    // handle input
+    // TODO handle selecting card
+    if (bn::keypad::left_pressed())
+    {
+        if (_card_index > 0)
+            _card_index--;
+        else
+            _card_index = _player_main.get_hand().count() - 1;
+    }
+    if (bn::keypad::right_pressed())
+    {
+        if (_card_index < _player_main.get_hand().count() - 1)
+            _card_index++;
+        else
+            _card_index = 0;
+    }
+    // update card highlight
+    _sprite_card_highlight.set_x(_player_main.get_hand().get_card(_card_index).value().get_position().x());
+
     // TODO deal one card upon turn start
     // TODO handle game logic
-    // TODO handle input
 }

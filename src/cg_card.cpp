@@ -34,14 +34,9 @@ card::card(card_type cardtype, bn::fixed_point position) :
     }
 }
 
-void card::set_position(bn::fixed_point position)
+bn::fixed_point card::get_position()
 {
-    _sprite.value().set_position(position);
-}
-
-void card::set_active(bool active)
-{
-    _sprite.value().set_visible(active);
+    return _sprite.value().position();
 }
 
 card_type card::get_card_type()
@@ -52,4 +47,14 @@ card_type card::get_card_type()
 bool card::is_active()
 {
     return _sprite.value().visible();
+}
+
+void card::set_position(bn::fixed_point position)
+{
+    _sprite.value().set_position(position);
+}
+
+void card::set_active(bool active)
+{
+    _sprite.value().set_visible(active);
 }

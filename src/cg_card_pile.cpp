@@ -21,6 +21,24 @@ bn::fixed_point card_pile<Size>::_get_offset(int index)
 }
 
 template<int Size>
+bn::optional<card> card_pile<Size>::get_card(int index)
+{
+    return _cards[index].value();
+}
+
+template<int Size>
+bool card_pile<Size>::is_active()
+{
+    return _active;
+}
+
+template<int Size>
+int card_pile<Size>::count()
+{
+    return _cards.size();
+}
+
+template<int Size>
 template<int OtherSize>
 void card_pile<Size>::deal_card_to(card_pile<OtherSize>& other_pile)
 {
@@ -83,18 +101,6 @@ void card_pile<Size>::set_active(bool active)
         _cards[i].value().set_active(active);
     if (active)
         update_card_positions();
-}
-
-template<int Size>
-bool card_pile<Size>::is_active()
-{
-    return _active;
-}
-
-template<int Size>
-int card_pile<Size>::count()
-{
-    return _cards.size();
 }
 
 // IF UNABLE TO BUILD make sure that all different instances of card_pile<int> are defined below with their respective sizes

@@ -22,14 +22,15 @@ class card_pile
 public:
     card_pile(bn::fixed_point position, bn::fixed_point offset_direction, bool active = true);
     card_pile();
+    bn::optional<card> get_card(int index);
+    bool is_active();
+    int count();
     template<int OtherSize> void deal_card_to(card_pile<OtherSize>& other_pile);
     void add_card(card_type cardtype);
     void clear();
     void shuffle(bn::random& random_obj);
     void update_card_positions();
     void set_active(bool active);
-    bool is_active();
-    int count();
 };
 
 #endif
