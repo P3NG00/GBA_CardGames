@@ -17,13 +17,13 @@ card::card(card_type cardtype, bn::fixed x, bn::fixed y) :
         case card_type::HazardStop:          LOAD_SPRITE(card_hazard_stop);           break;
         case card_type::HazardSpeedLimit:    LOAD_SPRITE(card_hazard_speed_limit);    break;
         case card_type::HazardOutOfGas:      LOAD_SPRITE(card_hazard_out_of_gas);     break;
-        // TODO case card_type::HazardFlatTire:      LOAD_SPRITE(card_hazard_flat_tire);      break;
+        case card_type::HazardFlatTire:      LOAD_SPRITE(card_hazard_flat_tire);      break;
         // TODO case card_type::HazardAccident:      LOAD_SPRITE(card_hazard_accident);       break;
         // remedy
         case card_type::RemedyGo:            LOAD_SPRITE(card_remedy_go);             break;
         case card_type::RemedyEndOfLimit:    LOAD_SPRITE(card_remedy_end_of_limit);   break;
         case card_type::RemedyGasoline:      LOAD_SPRITE(card_remedy_gasoline);       break;
-        // TODO case card_type::RemedySpareTire:     LOAD_SPRITE(card_remedy_spare_tire);     break;
+        case card_type::RemedySpareTire:     LOAD_SPRITE(card_remedy_spare_tire);     break;
         // TODO case card_type::RemedyRepairs:       LOAD_SPRITE(card_remedy_repairs);        break;
         // safety
         // TODO case card_type::SafetyRightOfWay:    LOAD_SPRITE(card_safety_right_of_way);   break;

@@ -21,6 +21,10 @@ void scene_game::update()
         _cardpile.add_card(card_type::RemedyEndOfLimit);
     if (bn::keypad::b_pressed())
         _cardpile.add_card(card_type::RemedyGasoline);
+    if (bn::keypad::l_pressed())
+        _cardpile.add_card(card_type::HazardFlatTire);
+    if (bn::keypad::r_pressed())
+        _cardpile.add_card(card_type::RemedySpareTire);
     // reset key
     if (bn::keypad::start_pressed())
         _cardpile.clear();

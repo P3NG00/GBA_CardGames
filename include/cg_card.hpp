@@ -15,13 +15,13 @@
 #include "bn_sprite_items_card_hazard_stop.h"
 #include "bn_sprite_items_card_hazard_speed_limit.h"
 #include "bn_sprite_items_card_hazard_out_of_gas.h"
-// TODO #include "bn_sprite_items_card_hazard_flat_tire.h"
+#include "bn_sprite_items_card_hazard_flat_tire.h"
 // TODO #include "bn_sprite_items_card_hazard_accident.h"
 // remedy
 #include "bn_sprite_items_card_remedy_go.h"
 #include "bn_sprite_items_card_remedy_end_of_limit.h"
 #include "bn_sprite_items_card_remedy_gasoline.h"
-// TODO #include "bn_sprite_items_card_remedy_spare_tire.h"
+#include "bn_sprite_items_card_remedy_spare_tire.h"
 // TODO #include "bn_sprite_items_card_remedy_repairs.h"
 // safety
 // TODO #include "bn_sprite_items_card_safety_right_of_way.h"
