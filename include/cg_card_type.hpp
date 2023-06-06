@@ -15,7 +15,7 @@ enum card_type
     HazardOutOfGas,
     HazardFlatTire,
     HazardAccident,
-    // remedies
+    // remedy cards
     RemedyGo,
     RemedyEndOfLimit,
     RemedyGasoline,
