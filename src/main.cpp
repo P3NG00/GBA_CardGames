@@ -1,36 +1,19 @@
-#include "bn_core.h"
-#include "bn_fixed.h"
-#include "bn_optional.h"
-#include "bn_keypad.h"
-
-#include "cg_card.hpp"
-#include "cg_card_pile.hpp"
-#include "cg_card_type.hpp"
+#include "main.hpp"
 
 int main()
 {
     // initialize butano
     bn::core::init();
 
-    // TODO setup game
-    card_pile<16> cardpile(0, 0);
+    // TODO main menu scene
 
-    // game loop
-    while(true)
+    // create game scene
+    scene_game game_scene_obj = scene_game();
+
+    while (true)
     {
-        // TODO handle game logic
-        if (bn::keypad::up_pressed())
-            cardpile.add_card(card_type::Milage25);
-        if (bn::keypad::left_pressed())
-            cardpile.add_card(card_type::Milage50);
-        if (bn::keypad::down_pressed())
-            cardpile.add_card(card_type::Milage75);
-        if (bn::keypad::right_pressed())
-            cardpile.add_card(card_type::Milage100);
-        if (bn::keypad::a_pressed())
-            cardpile.add_card(card_type::Milage200);
-        if (bn::keypad::start_pressed())
-            cardpile.clear();
+        // update game scene
+        game_scene_obj.update();
 
         // update butano
         bn::core::update();
