@@ -26,10 +26,10 @@ card::card(card_type cardtype, bn::fixed x, bn::fixed y) :
         case card_type::RemedySpareTire:     LOAD_SPRITE(card_remedy_spare_tire);     break;
         case card_type::RemedyRepairs:       LOAD_SPRITE(card_remedy_repairs);        break;
         // safety
-        // TODO case card_type::SafetyRightOfWay:    LOAD_SPRITE(card_safety_right_of_way);   break;
-        // TODO case card_type::SafetyExtraTank:     LOAD_SPRITE(card_safety_extra_tank);     break;
-        // TODO case card_type::SafetyPunctureProof: LOAD_SPRITE(card_safety_puncture_proof); break;
-        // TODO case card_type::SafetyDrivingAce:    LOAD_SPRITE(card_safety_driving_ace);    break;
+        case card_type::SafetyRightOfWay:    LOAD_SPRITE(card_safety_right_of_way);   break;
+        case card_type::SafetyExtraTank:     LOAD_SPRITE(card_safety_extra_tank);     break;
+        case card_type::SafetyPunctureProof: LOAD_SPRITE(card_safety_puncture_proof); break;
+        case card_type::SafetyDrivingAce:    LOAD_SPRITE(card_safety_driving_ace);    break;
         default: return;
     }
 }

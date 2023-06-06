@@ -9,6 +9,14 @@ scene_game::scene_game() :
 void scene_game::update()
 {
     // TODO handle game logic
+    if (bn::keypad::up_pressed())
+        _cardpile.add_card(card_type::SafetyRightOfWay);
+    if (bn::keypad::left_pressed())
+        _cardpile.add_card(card_type::SafetyExtraTank);
+    if (bn::keypad::down_pressed())
+        _cardpile.add_card(card_type::SafetyPunctureProof);
+    if (bn::keypad::right_pressed())
+        _cardpile.add_card(card_type::SafetyDrivingAce);
     if (bn::keypad::a_pressed())
         _cardpile.add_card(card_type::HazardAccident);
     if (bn::keypad::b_pressed())

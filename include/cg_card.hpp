@@ -24,10 +24,10 @@
 #include "bn_sprite_items_card_remedy_spare_tire.h"
 #include "bn_sprite_items_card_remedy_repairs.h"
 // safety
-// TODO #include "bn_sprite_items_card_safety_right_of_way.h"
-// TODO #include "bn_sprite_items_card_safety_extra_tank.h"
-// TODO #include "bn_sprite_items_card_safety_puncture_proof.h"
-// TODO #include "bn_sprite_items_card_safety_driving_ace.h"
+#include "bn_sprite_items_card_safety_right_of_way.h"
+#include "bn_sprite_items_card_safety_extra_tank.h"
+#include "bn_sprite_items_card_safety_puncture_proof.h"
+#include "bn_sprite_items_card_safety_driving_ace.h"
 
 #include "cg_card_type.hpp"
 

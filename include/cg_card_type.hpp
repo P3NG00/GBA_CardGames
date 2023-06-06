@@ -22,10 +22,10 @@ enum card_type
     RemedySpareTire,
     RemedyRepairs,
     // safety cards
-    // TODO SafetyRightOfWay,
-    // TODO SafetyExtraTank,
-    // TODO SafetyPunctureProof,
-    // TODO SafetyDrivingAce,
+    SafetyRightOfWay,
+    SafetyExtraTank,
+    SafetyPunctureProof,
+    SafetyDrivingAce,
 };
 
 #endif
