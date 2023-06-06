@@ -1,8 +1,6 @@
 #include "cg_scene_game.hpp"
 
-scene_game::scene_game(bn::random& random_obj) :
-    _pile_draw(),
-    _pile_hand(bn::fixed_point(-48, 70), bn::fixed_point(16, 0))
+scene_game::scene_game(bn::random& random_obj)
 {
     // add cards to draw pile
     int i;
@@ -46,12 +44,16 @@ scene_game::scene_game(bn::random& random_obj) :
     // shuffle draw pile
     _pile_draw.shuffle(random_obj);
     // deal cards to player
-    for (i = 0; i < 7; i++)
-        _pile_draw.deal_card_to(_pile_hand);
+    for (i = 0; i < 6; i++)
+    {
+        _pile_draw.deal_card_to(_pile_hand_opponent);
+        _pile_draw.deal_card_to(_pile_hand_player);
+    }
 }
 
 void scene_game::update(bn::random& random_obj)
 {
+    // TODO deal one card upon turn start
     // TODO handle game logic
     // TODO handle input
 }
