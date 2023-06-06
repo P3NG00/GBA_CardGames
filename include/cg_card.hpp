@@ -13,7 +13,7 @@
 #include "bn_sprite_items_card_milage_200.h"
 // hazard
 #include "bn_sprite_items_card_hazard_stop.h"
-// TODO #include "bn_sprite_items_card_hazard_speed_limit.h"
+#include "bn_sprite_items_card_hazard_speed_limit.h"
 // TODO #include "bn_sprite_items_card_hazard_out_of_gas.h"
 // TODO #include "bn_sprite_items_card_hazard_flat_tire.h"
 // TODO #include "bn_sprite_items_card_hazard_accident.h"

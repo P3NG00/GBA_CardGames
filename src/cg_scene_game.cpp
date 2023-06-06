@@ -19,6 +19,8 @@ void scene_game::update()
         _cardpile.add_card(card_type::Milage100);
     if (bn::keypad::a_pressed())
         _cardpile.add_card(card_type::Milage200);
+    if (bn::keypad::b_pressed())
+        _cardpile.add_card(card_type::HazardSpeedLimit);
     if (bn::keypad::l_pressed())
         _cardpile.add_card(card_type::RemedyGo);
     if (bn::keypad::r_pressed())

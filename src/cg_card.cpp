@@ -15,7 +15,7 @@ card::card(card_type cardtype, bn::fixed x, bn::fixed y) :
         case card_type::Milage200:           LOAD_SPRITE(card_milage_200);            break;
         // hazard
         case card_type::HazardStop:          LOAD_SPRITE(card_hazard_stop);           break;
-        // TODO case card_type::HazardSpeedLimit:    LOAD_SPRITE(card_hazard_speed_limit);    break;
+        case card_type::HazardSpeedLimit:    LOAD_SPRITE(card_hazard_speed_limit);    break;
         // TODO case card_type::HazardOutOfGas:      LOAD_SPRITE(card_hazard_out_of_gas);     break;
         // TODO case card_type::HazardFlatTire:      LOAD_SPRITE(card_hazard_flat_tire);      break;
         // TODO case card_type::HazardAccident:      LOAD_SPRITE(card_hazard_accident);       break;
