@@ -2,6 +2,7 @@
 #define CG_CARD_HPP
 
 #include "bn_fixed.h"
+#include "bn_fixed_point.h"
 #include "bn_optional.h"
 #include "bn_sprite_ptr.h"
 
@@ -36,9 +37,10 @@ class card
     bn::optional<bn::sprite_ptr> _sprite;
     card_type _cardtype;
 public:
-    card(card_type cardtype, bn::fixed x, bn::fixed y);
-    void set_position(bn::fixed x, bn::fixed y);
+    card(card_type cardtype, bn::fixed_point position);
+    void set_position(bn::fixed_point position);
     void set_active(bool active);
+    card_type get_card_type();
     bool is_active();
 };
 

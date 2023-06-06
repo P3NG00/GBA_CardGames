@@ -2,7 +2,8 @@
 
 scene_game::scene_game() :
     _background(bn::regular_bg_items::background.create_bg(0, 0)),
-    _pile_draw(0, -72, false)
+    _pile_draw(),
+    _pile_hand(bn::fixed_point(-48, 70), bn::fixed_point(16, 0))
 {
     // add cards to draw pile
     int i;
@@ -43,6 +44,11 @@ scene_game::scene_game() :
     _pile_draw.add_card(card_type::SafetyExtraTank);
     _pile_draw.add_card(card_type::SafetyPunctureProof);
     _pile_draw.add_card(card_type::SafetyDrivingAce);
+    // shuffle draw pile
+    _pile_draw.shuffle(_random_obj);
+    // deal cards to player
+    for (i = 0; i < 7; i++)
+        _pile_draw.deal_card_to(_pile_hand);
 }
 
 void scene_game::update()

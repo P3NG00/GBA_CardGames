@@ -1,8 +1,8 @@
 #include "cg_card.hpp"
 
-#define LOAD_SPRITE(sprite_name) _sprite = bn::sprite_items::sprite_name.create_sprite(x, y)
+#define LOAD_SPRITE(sprite_name) _sprite = bn::sprite_items::sprite_name.create_sprite(position.x(), position.y())
 
-card::card(card_type cardtype, bn::fixed x, bn::fixed y) :
+card::card(card_type cardtype, bn::fixed_point position) :
     _cardtype(cardtype)
 {
     switch (cardtype)
@@ -34,14 +34,19 @@ card::card(card_type cardtype, bn::fixed x, bn::fixed y) :
     }
 }
 
-void card::set_position(bn::fixed x, bn::fixed y)
+void card::set_position(bn::fixed_point position)
 {
-    _sprite.value().set_position(x, y);
+    _sprite.value().set_position(position);
 }
 
 void card::set_active(bool active)
 {
     _sprite.value().set_visible(active);
+}
+
+card_type card::get_card_type()
+{
+    return _cardtype;
 }
 
 bool card::is_active()

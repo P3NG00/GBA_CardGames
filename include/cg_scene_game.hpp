@@ -1,6 +1,7 @@
 #ifndef CG_SCENE_GAME_HPP
 #define CG_SCENE_GAME_HPP
 
+#include "bn_fixed_point.h"
 #include "bn_keypad.h"
 #include "bn_random.h"
 #include "bn_regular_bg_ptr.h"
@@ -14,6 +15,7 @@ class scene_game
     bn::random _random_obj;
     bn::regular_bg_ptr _background;
     card_pile<106> _pile_draw;
+    card_pile<7> _pile_hand;
 public:
     scene_game();
     void update();
