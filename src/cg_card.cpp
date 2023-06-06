@@ -21,7 +21,7 @@ card::card(card_type cardtype, bn::fixed x, bn::fixed y) :
         // TODO case card_type::HazardAccident:      LOAD_SPRITE(card_hazard_accident);       break;
         // remedy
         case card_type::RemedyGo:            LOAD_SPRITE(card_remedy_go);             break;
-        // TODO case card_type::RemedyEndOfLimit:    LOAD_SPRITE(card_remedy_end_of_limit);   break;
+        case card_type::RemedyEndOfLimit:    LOAD_SPRITE(card_remedy_end_of_limit);   break;
         case card_type::RemedyGasoline:      LOAD_SPRITE(card_remedy_gasoline);       break;
         // TODO case card_type::RemedySpareTire:     LOAD_SPRITE(card_remedy_spare_tire);     break;
         // TODO case card_type::RemedyRepairs:       LOAD_SPRITE(card_remedy_repairs);        break;

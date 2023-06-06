@@ -17,7 +17,7 @@ enum card_type
     // TODO HazardAccident,
     // remedy cards
     RemedyGo,
-    // TODO RemedyEndOfLimit,
+    RemedyEndOfLimit,
     RemedyGasoline,
     // TODO RemedySpareTire,
     // TODO RemedyRepairs,

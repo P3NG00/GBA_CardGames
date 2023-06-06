@@ -19,7 +19,7 @@
 // TODO #include "bn_sprite_items_card_hazard_accident.h"
 // remedy
 #include "bn_sprite_items_card_remedy_go.h"
-// TODO #include "bn_sprite_items_card_remedy_end_of_limit.h"
+#include "bn_sprite_items_card_remedy_end_of_limit.h"
 #include "bn_sprite_items_card_remedy_gasoline.h"
 // TODO #include "bn_sprite_items_card_remedy_spare_tire.h"
 // TODO #include "bn_sprite_items_card_remedy_repairs.h"
