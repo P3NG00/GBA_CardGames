@@ -4,11 +4,11 @@ scene::scene()
 {
 }
 
-void scene::execute()
+void scene::execute(bn::random& random_obj)
 {
     while (!done())
     {
-        update();
+        update(random_obj);
         bn::core::update();
     }
 }

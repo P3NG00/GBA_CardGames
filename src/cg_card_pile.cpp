@@ -52,7 +52,6 @@ void card_pile<Size>::clear()
 template<int Size>
 void card_pile<Size>::shuffle(bn::random& random_obj)
 {
-    // TODO make random's seed based on time when started the game scene from the main menu once that's implemented
     for (int i = 0; i < _cards.size(); ++i)
     {
         int j = bn::max(0, bn::min(_cards.size() - 1, bn::abs(random_obj.get_int() % _cards.size())));

@@ -1,6 +1,6 @@
 #include "cg_scene_game.hpp"
 
-scene_game::scene_game() :
+scene_game::scene_game(bn::random& random_obj) :
     _pile_draw(),
     _pile_hand(bn::fixed_point(-48, 70), bn::fixed_point(16, 0))
 {
@@ -44,7 +44,7 @@ scene_game::scene_game() :
     _pile_draw.add_card(card_type::SafetyPunctureProof);
     _pile_draw.add_card(card_type::SafetyDrivingAce);
     // shuffle draw pile
-    _pile_draw.shuffle(_random_obj);
+    _pile_draw.shuffle(random_obj);
     // deal cards to player
     for (i = 0; i < 7; i++)
         _pile_draw.deal_card_to(_pile_hand);
@@ -55,7 +55,7 @@ bool scene_game::done()
     return false;
 }
 
-void scene_game::update()
+void scene_game::update(bn::random& random_obj)
 {
     // TODO handle game logic
     // TODO handle input
