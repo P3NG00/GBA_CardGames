@@ -46,8 +46,8 @@ scene_game::scene_game(bn::random& random_obj)
     // deal cards to player
     for (i = 0; i < 6; i++)
     {
-        _pile_draw.deal_card_to(_pile_hand_opponent);
-        _pile_draw.deal_card_to(_pile_hand_player);
+        _pile_draw.deal_card_to(_player_main.get_hand());
+        _pile_draw.deal_card_to(_player_opponent.get_hand());
     }
 }
 
