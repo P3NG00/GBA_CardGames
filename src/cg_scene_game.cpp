@@ -1,7 +1,6 @@
 #include "cg_scene_game.hpp"
 
 scene_game::scene_game() :
-    _background(bn::regular_bg_items::background.create_bg(0, 0)),
     _pile_draw(),
     _pile_hand(bn::fixed_point(-48, 70), bn::fixed_point(16, 0))
 {

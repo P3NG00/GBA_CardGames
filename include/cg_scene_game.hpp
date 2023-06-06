@@ -14,7 +14,6 @@
 class scene_game : public scene
 {
     bn::random _random_obj;
-    bn::regular_bg_ptr _background;
     card_pile<106> _pile_draw;
     card_pile<7> _pile_hand;
 protected:
