@@ -10,6 +10,8 @@
 #include "bn_sprite_items_card_milage_75.h"
 #include "bn_sprite_items_card_milage_100.h"
 #include "bn_sprite_items_card_milage_200.h"
+#include "bn_sprite_items_card_remedy_go.h"
+#include "bn_sprite_items_card_remedy_stop.h"
 
 #include "cg_card_type.hpp"
 

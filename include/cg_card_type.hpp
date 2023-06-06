@@ -10,22 +10,22 @@ enum card_type
     Milage100,
     Milage200,
     // hazard cards
-    Stop,
-    SpeedLimit,
-    OutOfGas,
-    FlatTire,
-    Accident,
+    HazardStop,
+    HazardSpeedLimit,
+    HazardOutOfGas,
+    HazardFlatTire,
+    HazardAccident,
     // remedies
-    Go,
-    EndOfLimit,
-    Gasoline,
-    SpareTire,
-    Repairs,
+    RemedyGo,
+    RemedyEndOfLimit,
+    RemedyGasoline,
+    RemedySpareTire,
+    RemedyRepairs,
     // safety cards
-    RightOfWay,
-    ExtraTank,
-    PunctureProof,
-    DrivingAce,
+    SafetyRightOfWay,
+    SafetyExtraTank,
+    SafetyPunctureProof,
+    SafetyDrivingAce,
 };
 
 #endif
