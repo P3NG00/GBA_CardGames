@@ -17,7 +17,6 @@ class scene_main_menu : public scene
     bn::vector<bn::sprite_ptr, 20> _text_sprites = bn::vector<bn::sprite_ptr, 20>();
 protected:
     bool done() override;
-    void update(bn::random& random_obj) override;
 public:
     scene_main_menu();
 };

@@ -10,8 +10,3 @@ bool scene_main_menu::done()
 {
     return bn::keypad::start_pressed();
 }
-
-void scene_main_menu::update(bn::random& random_obj)
-{
-    random_obj.update();
-}

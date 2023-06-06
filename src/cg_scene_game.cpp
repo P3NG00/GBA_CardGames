@@ -50,11 +50,6 @@ scene_game::scene_game(bn::random& random_obj) :
         _pile_draw.deal_card_to(_pile_hand);
 }
 
-bool scene_game::done()
-{
-    return false;
-}
-
 void scene_game::update(bn::random& random_obj)
 {
     // TODO handle game logic
