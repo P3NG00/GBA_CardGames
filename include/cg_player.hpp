@@ -12,7 +12,9 @@ class player
 protected:
     player(bn::fixed_point position, bn::fixed_point offset_direction);
 public:
+    virtual ~player() = default;
     card_pile<CardPileHandMax>& get_hand();
+    virtual void update();
 };
 
 #endif

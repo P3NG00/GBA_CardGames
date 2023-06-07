@@ -7,6 +7,7 @@ class player_computer : public player
 {
 public:
     player_computer(bn::fixed_point position, bn::fixed_point offset_direction);
+    void update() override;
 };
 
 #endif

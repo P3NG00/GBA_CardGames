@@ -9,3 +9,7 @@ card_pile<CardPileHandMax>& player::get_hand()
 {
     return _pile_hand;
 }
+
+void player::update()
+{
+}
