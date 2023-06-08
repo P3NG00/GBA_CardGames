@@ -1,0 +1,5 @@
+IF UNABLE TO BUILD make sure that all utilized instances of templated classes are defined in their cpp with their respective values
+example: I was getting the error below:
+undefined reference to 'void card_pile<106>::deal_card_to<7>(card_pile<7>&)'
+adding the line below in cg_card_pile.cpp fixed the build error:
+template void card_pile<CardPileMax>::deal_card_to<CardPileHandMax>(card_pile<CardPileHandMax>&);

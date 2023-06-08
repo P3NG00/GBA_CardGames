@@ -1,7 +1,6 @@
-#ifndef CG_CARD_HPP
-#define CG_CARD_HPP
+#ifndef CG_UTIL_HPP
+#define CG_UTIL_HPP
 
-#include "bn_fixed.h"
 #include "bn_fixed_point.h"
 #include "bn_optional.h"
 #include "bn_sprite_ptr.h"
@@ -32,17 +31,9 @@
 
 #include "cg_card_type.hpp"
 
-class card
-{
-    bn::optional<bn::sprite_ptr> _sprite;
-    card_type _cardtype;
-public:
-    card(card_type cardtype, bn::fixed_point position);
-    bn::fixed_point get_position();
-    card_type get_card_type();
-    bool is_active();
-    void set_position(bn::fixed_point position);
-    void set_active(bool active);
-};
+const int CardPileMax = 106;
+const int CardPileHandMax = 7;
+
+bn::optional<bn::sprite_ptr> load_sprite(card_type cardtype, bn::fixed_point position);
 
 #endif

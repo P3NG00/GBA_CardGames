@@ -31,6 +31,6 @@ void player_input::update()
         }
 
         // update card highlight
-        _sprite_card_highlight.set_x(get_hand().get_card(_card_index).value().get_position().x());
+        _sprite_card_highlight.set_x(get_hand_sprite_handler().get_sprite(_card_index).value().x());
     }
 }

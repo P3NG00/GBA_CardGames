@@ -6,11 +6,11 @@
 #include "bn_sprite_ptr.h"
 
 #include "cg_card_pile.hpp"
-#include "cg_constants.hpp"
 #include "cg_player.hpp"
 #include "cg_player_computer.hpp"
 #include "cg_player_input.hpp"
 #include "cg_scene.hpp"
+#include "cg_util.hpp"
 
 const int PlayerCount = 2; // TODO make this adjustable, this is a temporary constant
 
