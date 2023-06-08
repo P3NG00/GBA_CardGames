@@ -15,7 +15,7 @@ card_pile<CardPileHandMax>& player::get_hand()
     return _pile_hand;
 }
 
-void player::update()
+void player::update(bn::random& random_obj)
 {
 }
 

@@ -5,7 +5,7 @@ player_input::player_input(bn::fixed_point position) :
 {
 }
 
-void player_input::update()
+void player_input::update(bn::random& random_obj)
 {
     // handle moving card selection
     if (bn::keypad::left_pressed())
@@ -34,5 +34,8 @@ bn::optional<card_type> player_input::get_chosen_card()
     card_type cardtype = get_hand().get_card_type(_card_index);
     get_hand().remove_card_type(_card_index);
     get_hand_sprite_handler().update_sprites();
+    // fix out of bounds index
+    if (_card_index >= get_hand().count())
+        _card_index = get_hand().count() - 1;
     return cardtype;
 }

@@ -3,3 +3,10 @@ example: I was getting the error below:
 undefined reference to 'void card_pile<106>::deal_card_to<7>(card_pile<7>&)'
 adding the line below in cg_card_pile.cpp fixed the build error:
 template void card_pile<CardPileMax>::deal_card_to<CardPileHandMax>(card_pile<CardPileHandMax>&);
+
+// TODO Computer difficulties
+(// TODO IMPLEMENT FIRST FOR TESTING)
+Baby - Will choose to play or discard random cards at random times
+Easy - Will attempt to choose playable cards at random
+Normal - Will prefer to score when possible, only attacking or discarding when necessary
+Mean - Will prefer to attack when possible, scoring if no attack is possible, discarding when necessary

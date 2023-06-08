@@ -60,7 +60,7 @@ void scene_game::update(bn::random& random_obj)
         _index_player_last = _index_player_current;
     }
     // update player
-    _players[_index_player_current]->update();
+    _players[_index_player_current]->update(random_obj);
     // move to next turn if player is done
     bn::optional<card_type> chosen_card = _players[_index_player_current]->get_chosen_card();
     if (chosen_card.has_value())
