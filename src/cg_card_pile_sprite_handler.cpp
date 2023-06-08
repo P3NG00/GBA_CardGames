@@ -26,4 +26,5 @@ void card_pile_sprite_handler<Size>::update_sprites()
         _sprites[i].reset();
 }
 
-template class card_pile_sprite_handler<CardPileHandMax>;
+template class card_pile_sprite_handler<CardPileMax>;     // max deck size
+template class card_pile_sprite_handler<CardPileHandMax>; // max hand size

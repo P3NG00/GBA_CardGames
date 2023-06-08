@@ -6,6 +6,7 @@
 
 #include "cg_card_pile.hpp"
 #include "cg_card_pile_sprite_handler.hpp"
+#include "cg_card_type.hpp"
 #include "cg_util.hpp"
 
 class player
@@ -19,6 +20,7 @@ public:
     card_pile_sprite_handler<CardPileHandMax>& get_hand_sprite_handler();
     card_pile<CardPileHandMax>& get_hand();
     virtual void update();
+    virtual bn::optional<card_type> get_chosen_card();
 };
 
 #endif

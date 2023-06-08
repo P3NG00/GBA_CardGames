@@ -30,6 +30,12 @@ void card_pile<Size>::add_card_type(card_type cardtype)
 }
 
 template<int Size>
+void card_pile<Size>::remove_card_type(int index)
+{
+    _cards.erase(_cards.begin() + index);
+}
+
+template<int Size>
 void card_pile<Size>::clear()
 {
     _cards.clear();

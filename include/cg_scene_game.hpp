@@ -6,6 +6,7 @@
 #include "bn_sprite_ptr.h"
 
 #include "cg_card_pile.hpp"
+#include "cg_card_pile_sprite_handler.hpp"
 #include "cg_player.hpp"
 #include "cg_player_computer.hpp"
 #include "cg_player_input.hpp"
@@ -16,6 +17,8 @@ const int PlayerCount = 2; // TODO make this adjustable, this is a temporary con
 
 class scene_game : public scene
 {
+    // TODO remove temporary display for discard pile for testing card selecting
+    card_pile_sprite_handler<CardPileMax> _pile_discard_sprite_handler = card_pile_sprite_handler<CardPileMax>(bn::fixed_point(-112,  0), &_pile_discard);
     card_pile<CardPileMax> _pile_draw    = card_pile<CardPileMax>();
     card_pile<CardPileMax> _pile_discard = card_pile<CardPileMax>();
     int _index_player_current =  0;

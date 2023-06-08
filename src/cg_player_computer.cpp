@@ -5,7 +5,11 @@ player_computer::player_computer(bn::fixed_point position) :
 {
 }
 
-void player_computer::update()
+bn::optional<card_type> player_computer::get_chosen_card()
 {
-    // TODO implement ai choice
+    const int choice_index = 0; // TODO implement ai choice
+    card_type cardtype = get_hand().get_card_type(choice_index);
+    get_hand().remove_card_type(choice_index);
+    get_hand_sprite_handler().update_sprites();
+    return cardtype;
 }

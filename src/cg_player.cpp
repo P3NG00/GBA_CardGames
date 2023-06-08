@@ -18,3 +18,8 @@ card_pile<CardPileHandMax>& player::get_hand()
 void player::update()
 {
 }
+
+bn::optional<card_type> player::get_chosen_card()
+{
+    return bn::nullopt;
+}

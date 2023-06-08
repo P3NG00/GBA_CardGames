@@ -19,6 +19,7 @@ public:
     int count();
     template<int OtherSize> void deal_card_to(card_pile<OtherSize>& other_pile);
     void add_card_type(card_type cardtype);
+    void remove_card_type(int index);
     void clear();
     void shuffle(bn::random& random_obj);
 };

@@ -17,6 +17,7 @@ class player_input : public player
 public:
     player_input(bn::fixed_point position);
     void update() override;
+    bn::optional<card_type> get_chosen_card() override;
 };
 
 #endif
