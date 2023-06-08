@@ -14,13 +14,12 @@
 template<int Size>
 class card_pile
 {
+    bn::fixed_point _get_card_position(int index);
     bn::vector<bn::optional<card>, Size> _cards = bn::vector<bn::optional<card>, Size>();
-    bn::fixed_point _offset_direction;
     bn::fixed_point _position;
     bool _active;
-    bn::fixed_point _get_offset(int index);
 public:
-    card_pile(bn::fixed_point position, bn::fixed_point offset_direction, bool active = true);
+    card_pile(bn::fixed_point position, bool active = true);
     card_pile();
     bn::optional<card> get_card(int index);
     bool is_active();

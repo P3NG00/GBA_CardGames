@@ -19,8 +19,8 @@ class scene_game : public scene
     card_pile<CardPileMax> _pile_draw    = card_pile<CardPileMax>();
     card_pile<CardPileMax> _pile_discard = card_pile<CardPileMax>();
     int _current_player = 0;
-    player_input    _player_input    = player_input   (bn::fixed_point(-48,  70), bn::fixed_point(16, 0));
-    player_computer _player_computer = player_computer(bn::fixed_point(-48, -70), bn::fixed_point(16, 0));
+    player_input    _player_input    = player_input   (bn::fixed_point(-48,  70));
+    player_computer _player_computer = player_computer(bn::fixed_point(-48, -70));
     player* _players[PlayerCount] = {
         &_player_input,
         &_player_computer,

@@ -1,27 +1,36 @@
 #include "cg_player_input.hpp"
 
-player_input::player_input(bn::fixed_point position, bn::fixed_point offset_direction) :
-    player(position, offset_direction)
+player_input::player_input(bn::fixed_point position) :
+    player(position)
 {
 }
 
 void player_input::update()
 {
-    // TODO handle selecting card
-    if (bn::keypad::left_pressed())
+    // handle selecting card
+    if (bn::keypad::a_pressed())
     {
-        if (_card_index > 0)
-            _card_index--;
-        else
-            _card_index = get_hand().count() - 1;
+        // TODO
     }
-    if (bn::keypad::right_pressed())
+    else
     {
-        if (_card_index < get_hand().count() - 1)
-            _card_index++;
-        else
-            _card_index = 0;
+        // handle moving card selection
+        if (bn::keypad::left_pressed())
+        {
+            if (_card_index > 0)
+                _card_index--;
+            else
+                _card_index = get_hand().count() - 1;
+        }
+        if (bn::keypad::right_pressed())
+        {
+            if (_card_index < get_hand().count() - 1)
+                _card_index++;
+            else
+                _card_index = 0;
+        }
+
+        // update card highlight
+        _sprite_card_highlight.set_x(get_hand().get_card(_card_index).value().get_position().x());
     }
-    // update card highlight
-    _sprite_card_highlight.set_x(get_hand().get_card(_card_index).value().get_position().x());
 }

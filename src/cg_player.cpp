@@ -1,7 +1,7 @@
 #include "cg_player.hpp"
 
-player::player(bn::fixed_point position, bn::fixed_point offset_direction) :
-    _pile_hand(position, offset_direction)
+player::player(bn::fixed_point position) :
+    _pile_hand(position)
 {
 }
 

@@ -1,8 +1,7 @@
 #include "cg_card_pile.hpp"
 
 template<int Size>
-card_pile<Size>::card_pile(bn::fixed_point position, bn::fixed_point offset_direction, bool active) :
-    _offset_direction(offset_direction),
+card_pile<Size>::card_pile(bn::fixed_point position, bool active) :
     _position(position),
     _active(active)
 {
@@ -10,14 +9,14 @@ card_pile<Size>::card_pile(bn::fixed_point position, bn::fixed_point offset_dire
 
 template<int Size>
 card_pile<Size>::card_pile() :
-    card_pile(bn::fixed_point(0, 0), bn::fixed_point(0, 0), false)
+    card_pile(bn::fixed_point(0, 0), false)
 {
 }
 
 template<int Size>
-bn::fixed_point card_pile<Size>::_get_offset(int index)
+bn::fixed_point card_pile<Size>::_get_card_position(int index)
 {
-    return _position + (_offset_direction * index);
+    return _position + bn::fixed_point(index * 16, 0);
 }
 
 template<int Size>
@@ -54,7 +53,7 @@ void card_pile<Size>::deal_card_to(card_pile<OtherSize>& other_pile)
 template<int Size>
 void card_pile<Size>::add_card(card_type cardtype)
 {
-    bn::fixed_point offset = _get_offset(count());
+    bn::fixed_point offset = _get_card_position(count());
     card card_obj(cardtype, offset);
     if (!is_active())
         card_obj.set_active(false);
@@ -86,7 +85,7 @@ void card_pile<Size>::update_card_positions()
         return;
     for (int i = 0; i < _cards.size(); ++i)
     {
-        bn::fixed_point offset = _get_offset(i);
+        bn::fixed_point offset = _get_card_position(i);
         _cards[i].value().set_position(offset);
     }
 }
