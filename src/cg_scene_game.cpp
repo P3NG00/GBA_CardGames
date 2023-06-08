@@ -52,9 +52,21 @@ scene_game::scene_game(bn::random& random_obj)
 
 void scene_game::update(bn::random& random_obj)
 {
-    // TODO deal one card upon turn start
+    // deal one card upon turn start
+    if (_index_player_last != _index_player_current)
+    {
+        _pile_draw.deal_card_to(_players[_index_player_current]->get_hand());
+        _players[_index_player_current]->get_hand_sprite_handler().update_sprites();
+        _index_player_last = _index_player_current;
+    }
     // TODO handle player's turn
-    _players[_current_player]->update();
+    _players[_index_player_current]->update();
     // TODO move to next turn if player is done
+    // EXAMPLE CODE
+    // if (_players[_index_player_current]->is_done())
+    // {
+    //     _index_player_current = (_index_player_current + 1) % PlayerCount;
+    //     _players[_index_player_current]->set_done(false);
+    // }
     // TODO handle game logic
 }

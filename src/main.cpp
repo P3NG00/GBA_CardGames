@@ -5,10 +5,9 @@ int main()
     // initialize butano
     bn::core::init();
 
-    // setup background
+    // background visible in all scenes
     bn::regular_bg_ptr background = bn::regular_bg_items::background.create_bg(0, 0);
-
-    // setup random
+    // random number generator
     bn::random random_obj = bn::random();
 
     // execute main menu scene
