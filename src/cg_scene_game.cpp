@@ -52,12 +52,16 @@ scene_game::scene_game(bn::random& random_obj)
 
 void scene_game::update(bn::random& random_obj)
 {
-    // deal one card upon turn start
+    // if new player starting turn...
     if (_index_player_last != _index_player_current)
     {
+        // draw card // TODO make able to draw from discard
         _pile_draw.deal_card_to(_players[_index_player_current]->get_hand());
+        // handle player start turn
         _players[_index_player_current]->start_turn();
+        // update card sprites
         _players[_index_player_current]->get_hand_sprite_handler().update_sprites();
+        // update last player index
         _index_player_last = _index_player_current;
     }
     // update player
@@ -68,7 +72,9 @@ void scene_game::update(bn::random& random_obj)
     {
         // TODO remove - deal to discard for testing display and updating sprites
         _pile_discard.add_card_type(chosen_card.value());
+        // handle player end turn
         _players[_index_player_current]->end_turn();
+        // update card sprites
         _pile_discard_sprite_handler.update_sprites();
         // increment player index
         _index_player_current = (_index_player_current + 1) % PlayerCount;

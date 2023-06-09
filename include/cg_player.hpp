@@ -13,7 +13,9 @@
 
 class player
 {
+    // sprite handler for the player's hand
     card_pile_sprite_handler<CardPileHandMax> _pile_hand_sprite_handler;
+    // cards in the player's hand
     card_pile<CardPileHandMax> _pile_hand = card_pile<CardPileHandMax>();
 protected:
     player(bn::fixed_point position);
