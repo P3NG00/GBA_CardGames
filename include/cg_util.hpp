@@ -1,6 +1,7 @@
 #ifndef CG_UTIL_HPP
 #define CG_UTIL_HPP
 
+#include "bn_fixed.h"
 #include "bn_fixed_point.h"
 #include "bn_optional.h"
 #include "bn_sprite_ptr.h"
@@ -35,5 +36,7 @@ const int CardPileMax = 106;
 const int CardPileHandMax = 7;
 
 bn::optional<bn::sprite_ptr> load_sprite(card_type cardtype, bn::fixed_point position);
+
+int seconds_to_frames(bn::fixed seconds);
 
 #endif

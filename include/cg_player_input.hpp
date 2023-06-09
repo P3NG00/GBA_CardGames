@@ -17,8 +17,10 @@ class player_input : public player
     bn::sprite_ptr _sprite_card_highlight = bn::sprite_items::card_highlight.create_sprite(0, 53);
 public:
     player_input(bn::fixed_point position);
-    void update(bn::random& random_obj);
     bn::optional<card_type> get_chosen_card() override;
+    void update(bn::random& random_obj);
+    void start_turn() override;
+    void end_turn() override;
 };
 
 #endif

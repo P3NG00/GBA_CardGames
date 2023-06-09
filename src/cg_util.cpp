@@ -33,3 +33,8 @@ bn::optional<bn::sprite_ptr> load_sprite(card_type cardtype, bn::fixed_point pos
         default: return bn::nullopt;
     }
 }
+
+int seconds_to_frames(bn::fixed seconds)
+{
+    return (seconds * bn::fixed(60.0)).round_integer();
+}

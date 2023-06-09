@@ -5,6 +5,11 @@ player::player(bn::fixed_point position) :
 {
 }
 
+bn::optional<card_type> player::get_chosen_card()
+{
+    return bn::nullopt;
+}
+
 card_pile_sprite_handler<CardPileHandMax>& player::get_hand_sprite_handler()
 {
     return _pile_hand_sprite_handler;
@@ -19,7 +24,10 @@ void player::update(bn::random& random_obj)
 {
 }
 
-bn::optional<card_type> player::get_chosen_card()
+void player::start_turn()
 {
-    return bn::nullopt;
+}
+
+void player::end_turn()
+{
 }

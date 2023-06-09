@@ -20,10 +20,12 @@ protected:
     int _card_index = 0;
 public:
     virtual ~player() = default;
+    virtual bn::optional<card_type> get_chosen_card();
     card_pile_sprite_handler<CardPileHandMax>& get_hand_sprite_handler();
     card_pile<CardPileHandMax>& get_hand();
     virtual void update(bn::random& random_obj);
-    virtual bn::optional<card_type> get_chosen_card();
+    virtual void start_turn();
+    virtual void end_turn();
 };
 
 #endif

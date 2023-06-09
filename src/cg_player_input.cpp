@@ -3,6 +3,17 @@
 player_input::player_input(bn::fixed_point position) :
     player(position)
 {
+    _sprite_card_highlight.set_visible(false);
+}
+
+bn::optional<card_type> player_input::get_chosen_card()
+{
+    if (!bn::keypad::a_pressed())
+        return bn::nullopt;
+    card_type cardtype = get_hand().get_card_type(_card_index);
+    get_hand().remove_card_type(_card_index);
+    get_hand_sprite_handler().update_sprites();
+    return cardtype;
 }
 
 void player_input::update(bn::random& random_obj)
@@ -27,15 +38,15 @@ void player_input::update(bn::random& random_obj)
     _sprite_card_highlight.set_x(get_hand_sprite_handler().get_sprite(_card_index).value().x());
 }
 
-bn::optional<card_type> player_input::get_chosen_card()
+void player_input::start_turn()
 {
-    if (!bn::keypad::a_pressed())
-        return bn::nullopt;
-    card_type cardtype = get_hand().get_card_type(_card_index);
-    get_hand().remove_card_type(_card_index);
-    get_hand_sprite_handler().update_sprites();
     // fix out of bounds index
     if (_card_index >= get_hand().count())
         _card_index = get_hand().count() - 1;
-    return cardtype;
+    _sprite_card_highlight.set_visible(true);
+}
+
+void player_input::end_turn()
+{
+    _sprite_card_highlight.set_visible(false);
 }
