@@ -27,6 +27,7 @@ protected:
     bool _card_selected = false;
 public:
     virtual ~player() = default;
+    bn::fixed_point position();
     card_pile_sprite_handler<CardPileHandMax>& get_hand_sprite_handler();
     card_pile<CardPileHandMax>& get_hand();
     bool is_turn_done();

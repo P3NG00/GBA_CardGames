@@ -2,43 +2,31 @@
 
 scene_game::scene_game(bn::random& random_obj)
 {
-    // milage
-    for (int i = 0; i < 10; i++)
-    {
-        _pile_draw.add_card_type(card_type::Milage25);
-        _pile_draw.add_card_type(card_type::Milage50);
-        _pile_draw.add_card_type(card_type::Milage75);
-    }
-    for (int i = 0; i < 12; i++)
-        _pile_draw.add_card_type(card_type::Milage100);
-    for (int i = 0; i < 4; i++)
-        _pile_draw.add_card_type(card_type::Milage200);
-    // hazards
-    for (int i = 0; i < 5; i++)
-        _pile_draw.add_card_type(card_type::HazardStop);
-    for (int i = 0; i < 4; i++)
-        _pile_draw.add_card_type(card_type::HazardSpeedLimit);
-    for (int i = 0; i < 3; i++)
-    {
-        _pile_draw.add_card_type(card_type::HazardOutOfGas);
-        _pile_draw.add_card_type(card_type::HazardFlatTire);
-        _pile_draw.add_card_type(card_type::HazardAccident);
-    }
-    // remedies
-    for (int i = 0; i < 14; i++)
-        _pile_draw.add_card_type(card_type::RemedyGo);
-    for (int i = 0; i < 6; i++)
-    {
-        _pile_draw.add_card_type(card_type::RemedyEndOfLimit);
-        _pile_draw.add_card_type(card_type::RemedyGasoline);
-        _pile_draw.add_card_type(card_type::RemedySpareTire);
-        _pile_draw.add_card_type(card_type::RemedyRepairs);
-    }
-    // safeties
-    _pile_draw.add_card_type(card_type::SafetyRightOfWay);
-    _pile_draw.add_card_type(card_type::SafetyExtraTank);
-    _pile_draw.add_card_type(card_type::SafetyPunctureProof);
-    _pile_draw.add_card_type(card_type::SafetyDrivingAce);
+    const int CardTypesAmount = 19;
+    const bn::array<bn::pair<int, card_type>, CardTypesAmount> card_type_amounts = {
+        bn::pair<int, card_type>(10, card_type::Milage25),
+        bn::pair<int, card_type>(10, card_type::Milage50),
+        bn::pair<int, card_type>(10, card_type::Milage75),
+        bn::pair<int, card_type>(12, card_type::Milage100),
+        bn::pair<int, card_type>( 4, card_type::Milage200),
+        bn::pair<int, card_type>( 5, card_type::HazardStop),
+        bn::pair<int, card_type>( 4, card_type::HazardSpeedLimit),
+        bn::pair<int, card_type>( 3, card_type::HazardOutOfGas),
+        bn::pair<int, card_type>( 3, card_type::HazardFlatTire),
+        bn::pair<int, card_type>( 3, card_type::HazardAccident),
+        bn::pair<int, card_type>(14, card_type::RemedyGo),
+        bn::pair<int, card_type>( 6, card_type::RemedyEndOfLimit),
+        bn::pair<int, card_type>( 6, card_type::RemedyGasoline),
+        bn::pair<int, card_type>( 6, card_type::RemedySpareTire),
+        bn::pair<int, card_type>( 6, card_type::RemedyRepairs),
+        bn::pair<int, card_type>( 1, card_type::SafetyRightOfWay),
+        bn::pair<int, card_type>( 1, card_type::SafetyExtraTank),
+        bn::pair<int, card_type>( 1, card_type::SafetyPunctureProof),
+        bn::pair<int, card_type>( 1, card_type::SafetyDrivingAce),
+    };
+    for (int i = 0; i < CardTypesAmount; i++)
+        for (int j = 0; j < card_type_amounts[i].first; j++)
+            _pile_draw.add_card_type(card_type_amounts[i].second);
     // shuffle draw pile
     _pile_draw.shuffle(random_obj);
     // deal cards to players
@@ -71,8 +59,6 @@ void scene_game::update(bn::random& random_obj)
     {
         // handle player end turn
         _players[_index_player_current]->end_turn();
-        // update card sprites
-        _pile_discard_sprite_handler.update_sprites();
         // increment player index
         _index_player_current = (_index_player_current + 1) % PlayerCount;
     }

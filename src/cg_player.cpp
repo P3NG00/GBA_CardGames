@@ -6,6 +6,11 @@ player::player(bn::fixed_point position, int playfield_offset_y) :
 {
 }
 
+bn::fixed_point player::position()
+{
+    return get_hand_sprite_handler().get_position();
+}
+
 card_pile_sprite_handler<CardPileHandMax>& player::get_hand_sprite_handler()
 {
     return _pile_hand_sprite_handler;
@@ -31,8 +36,8 @@ void player::start_turn()
 
 void player::end_turn()
 {
-    bn::fixed_point position = get_hand_sprite_handler().get_position() + bn::fixed_point(0, _playfield_offset_y);
-    _sprite_card_played = load_sprite(get_hand().get_card_type(_card_index), position);
+    bn::fixed_point card_position = position() + bn::fixed_point(0, _playfield_offset_y);
+    _sprite_card_played = load_sprite(get_hand().get_card_type(_card_index), card_position);
     get_hand().remove_card_type(_card_index);
     get_hand_sprite_handler().update_sprites();
     _card_selected = false;
