@@ -8,16 +8,14 @@
 #include "bn_sprite_ptr.h"
 
 #include "cg_card_pile.hpp"
-#include "cg_card_pile_sprite_handler.hpp"
+#include "cg_card_pile_display.hpp"
 #include "cg_card_type.hpp"
 #include "cg_util.hpp"
 
 class player
 {
-    // sprite handler for the player's hand
-    card_pile_sprite_handler<CardPileHandMax> _pile_hand_sprite_handler;
     // cards in the player's hand
-    card_pile<CardPileHandMax> _pile_hand = card_pile<CardPileHandMax>();
+    card_pile_display<CardPileHandMax> _pile_hand_display;
     // most recently played card display
     bn::optional<bn::sprite_ptr> _sprite_card_played = bn::nullopt;
 protected:
@@ -28,8 +26,7 @@ protected:
 public:
     virtual ~player() = default;
     bn::fixed_point position();
-    card_pile_sprite_handler<CardPileHandMax>& get_hand_sprite_handler();
-    card_pile<CardPileHandMax>& get_hand();
+    card_pile_display<CardPileHandMax>& get_hand_display();
     bool is_turn_done();
     bool play_selected_card();
     virtual void update(bn::random& random_obj);

@@ -13,6 +13,7 @@
 template<int Size>
 class card_pile
 {
+protected:
     bn::vector<card_type, Size> _cards = bn::vector<card_type, Size>();
 public:
     card_type get_card_type(int index);

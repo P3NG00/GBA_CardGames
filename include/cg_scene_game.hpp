@@ -8,7 +8,7 @@
 #include "bn_utility.h"
 
 #include "cg_card_pile.hpp"
-#include "cg_card_pile_sprite_handler.hpp"
+#include "cg_card_pile_display.hpp"
 #include "cg_card_type.hpp"
 #include "cg_player.hpp"
 #include "cg_player_computer.hpp"

@@ -14,7 +14,7 @@ void player_computer::update(bn::random& random_obj)
         return;
     }
     // TODO implement difficulties
-    _card_index = random_obj.get_int() % get_hand().count();
+    _card_index = random_obj.get_int() % get_hand_display().count();
     _card_selected = true;
 }
 
