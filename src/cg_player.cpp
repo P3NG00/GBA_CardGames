@@ -26,12 +26,15 @@ bool player::play_selected_card()
 {
     if (!_card_selected)
         return false;
-    // TODO check if card is able to be played
+    // check if card is able to be played
+    // TODO
+    // update card sprite
     bn::fixed_point card_position = position() + bn::fixed_point(0, _playfield_offset_y);
     _sprite_card_played = load_sprite(get_hand_display().get_card_type(_card_index), card_position);
+    // remove card from hand
     get_hand_display().remove_card_type(_card_index);
+    // update hand sprites
     get_hand_display().update_sprites();
-    _card_selected = false;
     return true;
 }
 
@@ -45,4 +48,5 @@ void player::start_turn()
 
 void player::end_turn()
 {
+    _card_selected = false;
 }

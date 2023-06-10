@@ -41,6 +41,7 @@ void player_input::start_turn()
 
 void player_input::end_turn()
 {
+    player::end_turn();
     // hide card highlight
     _sprite_card_highlight.set_visible(false);
 }

@@ -8,6 +8,9 @@
 #include "bn_sprite_ptr.h"
 #include "bn_utility.h"
 
+#include "bn_sprite_items_card_back.h"
+
+#include "cg_card_display.hpp"
 #include "cg_card_pile.hpp"
 #include "cg_card_pile_display.hpp"
 #include "cg_card_type.hpp"
@@ -23,8 +26,10 @@ class scene_game : public scene
         &_player_input,
         &_player_computer,
     };
-    card_pile<CardPileMax> _pile_draw    = card_pile<CardPileMax>(); // TODO display back of card for drawing pile at (-8, 0)
-    card_pile<CardPileMax> _pile_discard = card_pile<CardPileMax>(); // TODO display most recently discarded card at (8, 0)
+    card_display _card_discard_display = card_display(bn::fixed_point(8, 0)); // TODO display most recently discarded card
+    bn::sprite_ptr _card_draw_sprite = bn::sprite_items::card_back.create_sprite(-8, 0);
+    card_pile<CardPileMax> _pile_draw    = card_pile<CardPileMax>();
+    card_pile<CardPileMax> _pile_discard = card_pile<CardPileMax>();
     int _index_player_current =  0;
     int _index_player_last    = -1;
     player_input    _player_input;
