@@ -57,7 +57,7 @@ void scene_game::update(bn::random& random_obj)
     // update player
     _players[_index_player_current]->update(random_obj);
     // move to next turn if player is done
-    if (_players[_index_player_current]->play_selected_card())
+    if (_players[_index_player_current]->is_turn_done())
     {
         // handle player end turn
         _players[_index_player_current]->end_turn();

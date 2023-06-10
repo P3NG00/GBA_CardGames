@@ -16,7 +16,7 @@ void player_computer::update(bn::random& random_obj)
     }
     // TODO implement difficulties
     _card_index = random_obj.get_int() % get_hand_display().count();
-    _card_selected = true;
+    _play_selected_card();
 }
 
 void player_computer::start_turn()

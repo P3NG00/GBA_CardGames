@@ -18,17 +18,17 @@ class player
     card_pile_display<CardPileHandMax> _pile_hand_display;
     // most recently played card display
     bn::optional<bn::sprite_ptr> _sprite_card_played = bn::nullopt;
+    bool _turn_done = false;
 protected:
     player(bn::fixed_point position, int playfield_offset_y);
+    void _play_selected_card();
     int _playfield_offset_y;
     int _card_index = 0;
-    bool _card_selected = false;
 public:
     virtual ~player() = default;
     bn::fixed_point position();
     card_pile_display<CardPileHandMax>& get_hand_display();
     bool is_turn_done();
-    bool play_selected_card();
     virtual void update(bn::random& random_obj);
     virtual void start_turn();
     virtual void end_turn();

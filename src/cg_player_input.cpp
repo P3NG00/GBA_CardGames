@@ -27,7 +27,12 @@ void player_input::update(bn::random&)
     // update card highlight
     _sprite_card_highlight.set_x(get_hand_display().get_sprite(_card_index).value().x());
 
-    _card_selected = bn::keypad::a_pressed();
+    if (bn::keypad::a_pressed())
+        _play_selected_card();
+    else if (bn::keypad::b_pressed())
+    {
+        // TODO discard card to discard pile
+    }
 }
 
 void player_input::start_turn()

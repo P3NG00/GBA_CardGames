@@ -18,7 +18,7 @@ class scene_main_menu : public scene
     bn::sprite_text_generator _text_generator = bn::sprite_text_generator(common::variable_8x16_sprite_font);
     bn::sprite_ptr _text_background_box = bn::sprite_items::text_background_box.create_sprite(0, 60);
     bn::vector<bn::sprite_ptr, 20> _text_sprites = bn::vector<bn::sprite_ptr, 20>();
-    int _cpu_speed = 1;
+    int _cpu_speed = 1; // TODO save and load last value in file
 protected:
     bool done() override;
     void update(bn::random& random_obj) override;
