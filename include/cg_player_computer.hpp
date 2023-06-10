@@ -15,8 +15,7 @@ class player_computer : public player
 {
     int _selection_timer = 0;
 public:
-    player_computer(bn::fixed_point position);
-    bn::optional<card_type> get_chosen_card() override;
+    player_computer(bn::fixed_point position, int playfield_offset_y);
     void update(bn::random& random_obj);
     void start_turn() override;
 };

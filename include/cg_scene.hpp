@@ -8,10 +8,10 @@ class scene
 {
 protected:
     scene();
-    virtual ~scene() = default;
     virtual bool done();
     virtual void update(bn::random& random_obj);
 public:
+    virtual ~scene() = default;
     void execute(bn::random& random_obj);
 };
 

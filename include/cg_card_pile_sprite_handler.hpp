@@ -19,6 +19,7 @@ class card_pile_sprite_handler
 public:
     card_pile_sprite_handler(bn::fixed_point position, card_pile<Size>* card_pile_ptr);
     bn::optional<bn::sprite_ptr> get_sprite(int index);
+    bn::fixed_point get_position();
     void update_sprites();
 };
 

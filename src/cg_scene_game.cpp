@@ -67,11 +67,8 @@ void scene_game::update(bn::random& random_obj)
     // update player
     _players[_index_player_current]->update(random_obj);
     // move to next turn if player is done
-    bn::optional<card_type> chosen_card = _players[_index_player_current]->get_chosen_card();
-    if (chosen_card.has_value())
+    if (_players[_index_player_current]->is_turn_done())
     {
-        // TODO remove - deal to discard for testing display and updating sprites
-        _pile_discard.add_card_type(chosen_card.value());
         // handle player end turn
         _players[_index_player_current]->end_turn();
         // update card sprites

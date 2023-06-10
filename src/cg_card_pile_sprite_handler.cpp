@@ -14,6 +14,12 @@ bn::optional<bn::sprite_ptr> card_pile_sprite_handler<Size>::get_sprite(int inde
 }
 
 template<int Size>
+bn::fixed_point card_pile_sprite_handler<Size>::get_position()
+{
+    return _position;
+}
+
+template<int Size>
 void card_pile_sprite_handler<Size>::update_sprites()
 {
     for (int i = 0; i < _card_pile_ptr->count(); i++)

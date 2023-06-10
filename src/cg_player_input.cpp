@@ -1,19 +1,9 @@
 #include "cg_player_input.hpp"
 
-player_input::player_input(bn::fixed_point position) :
-    player(position)
+player_input::player_input(bn::fixed_point position, int playfield_offset_y) :
+    player(position, playfield_offset_y)
 {
     _sprite_card_highlight.set_visible(false);
-}
-
-bn::optional<card_type> player_input::get_chosen_card()
-{
-    if (!bn::keypad::a_pressed())
-        return bn::nullopt;
-    card_type cardtype = get_hand().get_card_type(_card_index);
-    get_hand().remove_card_type(_card_index);
-    get_hand_sprite_handler().update_sprites();
-    return cardtype;
 }
 
 void player_input::update(bn::random& random_obj)
@@ -36,17 +26,23 @@ void player_input::update(bn::random& random_obj)
 
     // update card highlight
     _sprite_card_highlight.set_x(get_hand_sprite_handler().get_sprite(_card_index).value().x());
+
+    _card_selected = bn::keypad::a_pressed();
 }
 
 void player_input::start_turn()
 {
+    player::start_turn();
     // fix out of bounds index
     if (_card_index >= get_hand().count())
         _card_index = get_hand().count() - 1;
+    // show card highlight
     _sprite_card_highlight.set_visible(true);
 }
 
 void player_input::end_turn()
 {
+    player::end_turn();
+    // hide card highlight
     _sprite_card_highlight.set_visible(false);
 }
