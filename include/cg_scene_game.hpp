@@ -27,7 +27,7 @@ class scene_game : public scene
         &_player_input,
         &_player_computer,
     };
-    card_display _card_discard_display = card_display(bn::fixed_point(8, 0)); // TODO display most recently discarded card
+    card_display _card_discard_display = card_display(bn::fixed_point(8, 0));
     bn::sprite_ptr _card_draw_sprite = bn::sprite_items::card_back.create_sprite(-8, 0);
     card_pile<CardPileMax> _pile_draw    = card_pile<CardPileMax>();
     card_pile<CardPileMax> _pile_discard = card_pile<CardPileMax>();

@@ -25,6 +25,7 @@ void player::_discard_selected_card(card_pile<CardPileMax>& discard_pile)
 {
     card_type cardtype = get_hand_display().get_card_type(_card_index);
     get_hand_display().remove_card_type(_card_index);
+    get_hand_display().update_sprites();
     discard_pile.add_card_type(cardtype);
     _turn_done = true;
 }
