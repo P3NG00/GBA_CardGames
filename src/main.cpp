@@ -15,10 +15,16 @@ int main()
     // execute main menu scene
     scene_main_menu_obj.value().execute(random_obj);
 
+    // TODO create 'tutorial scene' that explains the cards and buttons
+
     // setup game scene
     scene_game scene_game_obj = scene_game(random_obj, scene_main_menu_obj.value().get_cpu_speed());
     // dispose of main menu scene
     scene_main_menu_obj.reset();
     // execute game scene
     scene_game_obj.execute(random_obj);
+
+    // TODO create 'game over scene' that shows the winner and the score
+
+    // TODO return to main menu
 }

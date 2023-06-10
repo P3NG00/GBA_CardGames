@@ -4,6 +4,7 @@
 #include "bn_fixed.h"
 #include "bn_fixed_point.h"
 #include "bn_math.h"
+#include "bn_optional.h"
 #include "bn_random.h"
 #include "bn_vector.h"
 
@@ -16,6 +17,7 @@ class card_pile
 protected:
     bn::vector<card_type, Size> _cards = bn::vector<card_type, Size>();
 public:
+    bn::optional<card_type> get_top_card_type();
     card_type get_card_type(int index);
     int count();
     template<int OtherSize> void deal_card_to(card_pile<OtherSize>& other_pile);

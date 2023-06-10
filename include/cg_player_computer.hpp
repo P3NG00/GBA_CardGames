@@ -6,6 +6,7 @@
 #include "bn_optional.h"
 #include "bn_random.h"
 
+#include "cg_card_pile.hpp"
 #include "cg_player.hpp"
 #include "cg_util.hpp"
 
@@ -15,7 +16,7 @@ class player_computer : public player
     int _selection_timer = 0;
 public:
     player_computer(bn::fixed_point position, int playfield_offset_y, bn::fixed selection_time_seconds);
-    void update(bn::random& random_obj);
+    void update(bn::random& random_obj, card_pile<CardPileMax>& discard_pile);
     void start_turn() override;
 };
 

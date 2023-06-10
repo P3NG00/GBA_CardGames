@@ -55,7 +55,7 @@ void scene_game::update(bn::random& random_obj)
         _index_player_last = _index_player_current;
     }
     // update player
-    _players[_index_player_current]->update(random_obj);
+    _players[_index_player_current]->update(random_obj, _pile_discard);
     // move to next turn if player is done
     if (_players[_index_player_current]->is_turn_done())
     {
@@ -63,6 +63,9 @@ void scene_game::update(bn::random& random_obj)
         _players[_index_player_current]->end_turn();
         // increment player index
         _index_player_current = (_index_player_current + 1) % _players.size();
+        // update discard sprite
+        _card_discard_display.update_card_type(_pile_discard.get_top_card_type());
     }
     // TODO handle game logic
+    // TODO fix crash, handle running out of cards
 }

@@ -6,7 +6,7 @@ player_input::player_input(bn::fixed_point position, int playfield_offset_y) :
     _sprite_card_highlight.set_visible(false);
 }
 
-void player_input::update(bn::random&)
+void player_input::update(bn::random&, card_pile<CardPileMax>& discard_pile)
 {
     // handle moving card selection
     if (bn::keypad::left_pressed())
@@ -30,9 +30,7 @@ void player_input::update(bn::random&)
     if (bn::keypad::a_pressed())
         _play_selected_card();
     else if (bn::keypad::b_pressed())
-    {
-        // TODO discard card to discard pile
-    }
+        _discard_selected_card(discard_pile);
 }
 
 void player_input::start_turn()

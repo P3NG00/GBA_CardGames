@@ -6,7 +6,7 @@ player_computer::player_computer(bn::fixed_point position, int playfield_offset_
 {
 }
 
-void player_computer::update(bn::random& random_obj)
+void player_computer::update(bn::random& random_obj, card_pile<CardPileMax>& discard_pile)
 {
     // check selection timer
     if (_selection_timer > 0)
@@ -14,9 +14,12 @@ void player_computer::update(bn::random& random_obj)
         _selection_timer--;
         return;
     }
-    // TODO implement difficulties
+    // TODO replace below code and implement difficulties
     _card_index = random_obj.get_int() % get_hand_display().count();
-    _play_selected_card();
+    if (random_obj.get_int() % 4 == 0)
+        _discard_selected_card(discard_pile);
+    else
+        _play_selected_card();
 }
 
 void player_computer::start_turn()

@@ -1,6 +1,14 @@
 #include "cg_card_pile.hpp"
 
 template<int Size>
+bn::optional<card_type> card_pile<Size>::get_top_card_type()
+{
+    if (_cards.empty())
+        return bn::nullopt;
+    return _cards.back();
+}
+
+template<int Size>
 card_type card_pile<Size>::get_card_type(int index)
 {
     return _cards[index];
@@ -18,7 +26,7 @@ void card_pile<Size>::deal_card_to(card_pile<OtherSize>& other_pile)
 {
     if (count() == 0)
         return;
-    card_type cardtype = _cards.back();
+    card_type cardtype = get_top_card_type().value();
     _cards.pop_back();
     other_pile.add_card_type(cardtype);
 }

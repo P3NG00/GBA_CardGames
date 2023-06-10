@@ -5,9 +5,10 @@ card_display::card_display(bn::fixed_point position) :
 {
 }
 
-void card_display::update_card_type(card_type cardtype)
+void card_display::update_card_type(bn::optional<card_type> cardtype)
 {
     _card_type = cardtype;
     _card_sprite.reset();
-    _card_sprite = load_sprite(cardtype, _position);
+    if (cardtype.has_value())
+        _card_sprite = load_sprite(cardtype.value(), _position);
 }

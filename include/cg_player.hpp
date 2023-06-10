@@ -22,6 +22,7 @@ class player
 protected:
     player(bn::fixed_point position, int playfield_offset_y);
     void _play_selected_card();
+    void _discard_selected_card(card_pile<CardPileMax>& discard_pile);
     int _playfield_offset_y;
     int _card_index = 0;
 public:
@@ -29,7 +30,7 @@ public:
     bn::fixed_point position();
     card_pile_display<CardPileHandMax>& get_hand_display();
     bool is_turn_done();
-    virtual void update(bn::random& random_obj);
+    virtual void update(bn::random& random_obj, card_pile<CardPileMax>& discard_pile);
     virtual void start_turn();
     virtual void end_turn();
 };
