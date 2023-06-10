@@ -9,13 +9,12 @@
 #include "cg_player.hpp"
 #include "cg_util.hpp"
 
-const int SelectionTime = seconds_to_frames(1);
-
 class player_computer : public player
 {
+    const int _selection_timer_frames;
     int _selection_timer = 0;
 public:
-    player_computer(bn::fixed_point position, int playfield_offset_y);
+    player_computer(bn::fixed_point position, int playfield_offset_y, bn::fixed selection_time_seconds);
     void update(bn::random& random_obj);
     void start_turn() override;
 };

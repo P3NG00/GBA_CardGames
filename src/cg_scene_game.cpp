@@ -1,6 +1,8 @@
 #include "cg_scene_game.hpp"
 
-scene_game::scene_game(bn::random& random_obj)
+scene_game::scene_game(bn::random& random_obj, bn::fixed cpu_selection_timer_seconds) :
+    _player_input   (bn::fixed_point(-48,  70), -34),
+    _player_computer(bn::fixed_point(-48, -70),  34, cpu_selection_timer_seconds)
 {
     const int CardTypesAmount = 19;
     const bn::array<bn::pair<int, card_type>, CardTypesAmount> card_type_amounts = {

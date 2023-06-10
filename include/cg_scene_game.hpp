@@ -2,6 +2,7 @@
 #define CG_SCENE_GAME_HPP
 
 #include "bn_array.h"
+#include "bn_fixed.h"
 #include "bn_fixed_point.h"
 #include "bn_random.h"
 #include "bn_sprite_ptr.h"
@@ -26,12 +27,12 @@ class scene_game : public scene
     card_pile<CardPileMax> _pile_discard = card_pile<CardPileMax>(); // TODO display most recently discarded card at (8, 0)
     int _index_player_current =  0;
     int _index_player_last    = -1;
-    player_input    _player_input    = player_input   (bn::fixed_point(-48,  70), -34);
-    player_computer _player_computer = player_computer(bn::fixed_point(-48, -70),  34);
+    player_input    _player_input;
+    player_computer _player_computer;
 protected:
     void update(bn::random& random_obj) override;
 public:
-    scene_game(bn::random& random_obj);
+    scene_game(bn::random& random_obj, bn::fixed cpu_selection_timer_seconds);
 };
 
 #endif

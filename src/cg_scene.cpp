@@ -9,9 +9,8 @@ bool scene::done()
     return false;
 }
 
-void scene::update(bn::random& random_obj)
+void scene::update(bn::random&)
 {
-    random_obj.update();
 }
 
 void scene::execute(bn::random& random_obj)
