@@ -16,20 +16,18 @@
 #include "cg_scene.hpp"
 #include "cg_util.hpp"
 
-const int PlayerCount = 2; // TODO make this adjustable, this is a temporary constant
-
 class scene_game : public scene
 {
+    const bn::array<player*, 2> _players = {
+        &_player_input,
+        &_player_computer,
+    };
     card_pile<CardPileMax> _pile_draw    = card_pile<CardPileMax>(); // TODO display back of card for drawing pile at (-8, 0)
     card_pile<CardPileMax> _pile_discard = card_pile<CardPileMax>(); // TODO display most recently discarded card at (8, 0)
     int _index_player_current =  0;
     int _index_player_last    = -1;
     player_input    _player_input    = player_input   (bn::fixed_point(-48,  70), -34);
     player_computer _player_computer = player_computer(bn::fixed_point(-48, -70),  34);
-    player* _players[PlayerCount] = {
-        &_player_input,
-        &_player_computer,
-    };
 protected:
     void update(bn::random& random_obj) override;
 public:

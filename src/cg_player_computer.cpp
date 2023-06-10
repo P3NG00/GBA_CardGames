@@ -20,7 +20,6 @@ void player_computer::update(bn::random& random_obj)
 
 void player_computer::start_turn()
 {
-    player::start_turn();
     // reset selection timer
     _selection_timer = SelectionTime;
 }

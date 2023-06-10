@@ -6,7 +6,7 @@ player_input::player_input(bn::fixed_point position, int playfield_offset_y) :
     _sprite_card_highlight.set_visible(false);
 }
 
-void player_input::update(bn::random& random_obj)
+void player_input::update(bn::random&)
 {
     // handle moving card selection
     if (bn::keypad::left_pressed())
@@ -32,7 +32,6 @@ void player_input::update(bn::random& random_obj)
 
 void player_input::start_turn()
 {
-    player::start_turn();
     // fix out of bounds index
     if (_card_index >= get_hand().count())
         _card_index = get_hand().count() - 1;
@@ -42,7 +41,6 @@ void player_input::start_turn()
 
 void player_input::end_turn()
 {
-    player::end_turn();
     // hide card highlight
     _sprite_card_highlight.set_visible(false);
 }

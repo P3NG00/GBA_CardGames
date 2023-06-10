@@ -31,10 +31,10 @@ scene_game::scene_game(bn::random& random_obj)
     _pile_draw.shuffle(random_obj);
     // deal cards to players
     for (int i = 0; i < 6; i++)
-        for (int j = 0; j < PlayerCount; j++)
+        for (int j = 0; j < _players.size(); j++)
             _pile_draw.deal_card_to(_players[j]->get_hand());
     // update sprite handlers
-    for (int i = 0; i < PlayerCount; i++)
+    for (int i = 0; i < _players.size(); i++)
         _players[i]->get_hand_sprite_handler().update_sprites();
 }
 
@@ -55,12 +55,12 @@ void scene_game::update(bn::random& random_obj)
     // update player
     _players[_index_player_current]->update(random_obj);
     // move to next turn if player is done
-    if (_players[_index_player_current]->is_turn_done())
+    if (_players[_index_player_current]->play_selected_card())
     {
         // handle player end turn
         _players[_index_player_current]->end_turn();
         // increment player index
-        _index_player_current = (_index_player_current + 1) % PlayerCount;
+        _index_player_current = (_index_player_current + 1) % _players.size();
     }
     // TODO handle game logic
 }

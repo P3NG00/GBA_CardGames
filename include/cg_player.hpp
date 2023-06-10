@@ -31,6 +31,7 @@ public:
     card_pile_sprite_handler<CardPileHandMax>& get_hand_sprite_handler();
     card_pile<CardPileHandMax>& get_hand();
     bool is_turn_done();
+    bool play_selected_card();
     virtual void update(bn::random& random_obj);
     virtual void start_turn();
     virtual void end_turn();
