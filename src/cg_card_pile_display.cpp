@@ -21,11 +21,13 @@ bn::fixed_point card_pile_display<Size>::get_position()
 template<int Size>
 void card_pile_display<Size>::update_sprites()
 {
+    bn::fixed_point position = get_position() - bn::fixed_point((this->_cards.size() - 1) * 8, 0);
     for (int i = 0; i < this->_cards.size(); i++)
     {
         if (_sprites[i].has_value())
             _sprites[i].reset();
-        _sprites[i] = load_sprite(this->get_card_type(i), _position + bn::fixed_point(i * 16, 0));
+        _sprites[i] = load_sprite(this->get_card_type(i), position);
+        position.set_x(position.x() + 16);
     }
     for (int i = this->_cards.size(); i < Size; i++)
         _sprites[i].reset();
