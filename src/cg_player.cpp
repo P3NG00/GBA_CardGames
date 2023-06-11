@@ -1,9 +1,17 @@
 #include "cg_player.hpp"
 
-player::player(bn::fixed_point position, int playfield_offset_y) :
+player::player(bn::fixed_point position, int playfield_offset_y, text_handler& texthandler) :
     _pile_hand_display(position),
     _playfield_offset_y(playfield_offset_y)
 {
+    _update_milage_text(texthandler);
+}
+
+void player::_update_milage_text(text_handler& texthandler)
+{
+    _text_milage_sprites.clear();
+    bn::fixed_point text_position = position() + bn::fixed_point(32, _playfield_offset_y);
+    texthandler.generate(text_position, bn::to_string<4>(_milage) + "M", _text_milage_sprites, bn::sprite_text_generator::alignment_type::RIGHT); // TODO make sure string size is correct
 }
 
 void player::_play_selected_card()
@@ -53,7 +61,8 @@ void player::start_turn()
 {
 }
 
-void player::end_turn()
+void player::end_turn(text_handler& texthandler)
 {
+    _update_milage_text(texthandler);
     _turn_done = false;
 }

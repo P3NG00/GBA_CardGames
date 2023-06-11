@@ -10,5 +10,6 @@
 
 #include "cg_scene_game.hpp"
 #include "cg_scene_main_menu.hpp"
+#include "cg_text_handler.hpp"
 
 #endif

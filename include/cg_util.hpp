@@ -29,11 +29,17 @@
 #include "bn_sprite_items_card_safety_extra_tank.h"
 #include "bn_sprite_items_card_safety_puncture_proof.h"
 #include "bn_sprite_items_card_safety_driving_ace.h"
+// safety (coup-fourré)
+#include "bn_sprite_items_card_safety_right_of_way_coup_fourre.h"
+#include "bn_sprite_items_card_safety_extra_tank_coup_fourre.h"
+#include "bn_sprite_items_card_safety_puncture_proof_coup_fourre.h"
+#include "bn_sprite_items_card_safety_driving_ace_coup_fourre.h"
 
 #include "cg_card_type.hpp"
 
 const int CardPileMax = 106;
 const int CardPileHandMax = 7;
+const int CardPileSafetyMax = 4;
 
 bn::optional<bn::sprite_ptr> load_sprite(card_type cardtype, bn::fixed_point position);
 

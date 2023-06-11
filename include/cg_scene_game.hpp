@@ -19,6 +19,7 @@
 #include "cg_player_computer.hpp"
 #include "cg_player_input.hpp"
 #include "cg_scene.hpp"
+#include "cg_text_handler.hpp"
 #include "cg_util.hpp"
 
 class scene_game : public scene
@@ -36,9 +37,9 @@ class scene_game : public scene
     player_input    _player_input;
     player_computer _player_computer;
 protected:
-    void update(bn::random& random_obj) override;
+    void update(bn::random& random_obj, text_handler& texthandler) override;
 public:
-    scene_game(bn::random& random_obj, bn::fixed cpu_selection_timer_seconds);
+    scene_game(bn::random& random_obj, text_handler& texthandler, bn::fixed cpu_selection_timer_seconds);
 };
 
 #endif

@@ -9,15 +9,15 @@ bool scene::done()
     return false;
 }
 
-void scene::update(bn::random&)
+void scene::update(bn::random&, text_handler&)
 {
 }
 
-void scene::execute(bn::random& random_obj)
+void scene::execute(bn::random& random_obj, text_handler& texthandler)
 {
     while (!done())
     {
-        update(random_obj);
+        update(random_obj, texthandler);
         bn::core::update();
     }
 }

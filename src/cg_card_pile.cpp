@@ -61,6 +61,7 @@ void card_pile<Size>::shuffle(bn::random& random_obj)
     }
 }
 
-template class card_pile<CardPileMax>;     // max deck size
-template class card_pile<CardPileHandMax>; // max hand size
+template class card_pile<CardPileMax>;       // max deck size
+template class card_pile<CardPileHandMax>;   // max hand size
+template class card_pile<CardPileSafetyMax>; // max safety pile size // TODO implement safety pile in player
 template void card_pile<CardPileMax>::deal_card_to<CardPileHandMax>(card_pile<CardPileHandMax>&);

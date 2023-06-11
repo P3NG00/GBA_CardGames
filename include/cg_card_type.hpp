@@ -26,6 +26,11 @@ enum card_type
     SafetyExtraTank,
     SafetyPunctureProof,
     SafetyDrivingAce,
+    // safety cards (coup-fourré) // TODO implement coup-fourré
+    SafetyRightOfWayCoupFourre,
+    SafetyExtraTankCoupFourre,
+    SafetyPunctureProofCoupFourre,
+    SafetyDrivingAceCoupFourre,
 };
 
 #endif

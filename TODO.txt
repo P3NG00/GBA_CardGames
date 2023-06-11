@@ -11,4 +11,4 @@ Easy - Will attempt to choose playable cards at random
 Normal - Will prefer to score when possible, only attacking or discarding when necessary
 Mean - Will prefer to attack when possible, scoring if no attack is possible, discarding when necessary
 
-// TODO remove pointers from code if possible. use references instead
+// TODO change most functions to use references (&) where possible

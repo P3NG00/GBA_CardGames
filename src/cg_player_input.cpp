@@ -1,7 +1,7 @@
 #include "cg_player_input.hpp"
 
-player_input::player_input(bn::fixed_point position, int playfield_offset_y) :
-    player(position, playfield_offset_y)
+player_input::player_input(bn::fixed_point position, int playfield_offset_y, text_handler& texthandler) :
+    player(position, playfield_offset_y, texthandler)
 {
     _sprite_card_highlight.set_visible(false);
 }
@@ -42,9 +42,9 @@ void player_input::start_turn()
     _sprite_card_highlight.set_visible(true);
 }
 
-void player_input::end_turn()
+void player_input::end_turn(text_handler& texthandler)
 {
-    player::end_turn();
+    player::end_turn(texthandler);
     // hide card highlight
     _sprite_card_highlight.set_visible(false);
 }

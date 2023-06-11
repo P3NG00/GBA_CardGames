@@ -1,8 +1,8 @@
 #include "cg_scene_game.hpp"
 
-scene_game::scene_game(bn::random& random_obj, bn::fixed cpu_selection_timer_seconds) :
-    _player_input   (bn::fixed_point(0,  70), -34),
-    _player_computer(bn::fixed_point(0, -70),  34, cpu_selection_timer_seconds)
+scene_game::scene_game(bn::random& random_obj, text_handler& texthandler, bn::fixed cpu_selection_timer_seconds) :
+    _player_input   (bn::fixed_point(0,  70), -34, texthandler),
+    _player_computer(bn::fixed_point(0, -70),  34, texthandler, cpu_selection_timer_seconds) // TODO only show back of opponent's cards
 {
     const int CardTypesAmount = 19;
     const bn::array<bn::pair<int, card_type>, CardTypesAmount> card_type_amounts = {
@@ -40,7 +40,7 @@ scene_game::scene_game(bn::random& random_obj, bn::fixed cpu_selection_timer_sec
         _players[i]->get_hand_display().update_sprites();
 }
 
-void scene_game::update(bn::random& random_obj)
+void scene_game::update(bn::random& random_obj, text_handler& texthandler)
 {
     // if new player starting turn...
     if (_index_player_last != _index_player_current)
@@ -60,7 +60,7 @@ void scene_game::update(bn::random& random_obj)
     if (_players[_index_player_current]->is_turn_done())
     {
         // handle player end turn
-        _players[_index_player_current]->end_turn();
+        _players[_index_player_current]->end_turn(texthandler);
         // increment player index
         _index_player_current = (_index_player_current + 1) % _players.size();
         // update discard sprite
