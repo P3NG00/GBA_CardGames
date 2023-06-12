@@ -16,6 +16,7 @@ class card_display
     bn::fixed_point _position;
 public:
     card_display(bn::fixed_point position);
+    bn::optional<card_type> get_card_type();
     void update_card_type(bn::optional<card_type> cardtype);
 };
 
