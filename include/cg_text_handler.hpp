@@ -10,6 +10,8 @@
 
 #include "common_variable_8x16_sprite_font.h"
 
+#include "cg_util.hpp"
+
 class text_handler
 {
     bn::sprite_text_generator _text_generator = bn::sprite_text_generator(common::variable_8x16_sprite_font);

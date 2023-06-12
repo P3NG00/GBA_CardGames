@@ -30,7 +30,7 @@ class player
     // players speed card
     card_display _card_display_speed;
     // milage text sprites
-    bn::vector<bn::sprite_ptr, 2> _text_milage_sprites = bn::vector<bn::sprite_ptr, 2>(); // TODO make sure size is correct
+    bn::vector<bn::sprite_ptr, PlayerMilageSpritesMax> _text_milage_sprites = bn::vector<bn::sprite_ptr, PlayerMilageSpritesMax>();
     bool _turn_done = false;
     int _milage = 0;
 protected:

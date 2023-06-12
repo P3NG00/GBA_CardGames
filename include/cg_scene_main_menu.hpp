@@ -15,7 +15,7 @@
 class scene_main_menu : public scene
 {
     void _update_textbox_position();
-    bn::vector<bn::sprite_ptr, 13> _start_text_sprites = bn::vector<bn::sprite_ptr, 13>();
+    bn::vector<bn::sprite_ptr, MainMenuSpritesMax> _start_text_sprites = bn::vector<bn::sprite_ptr, MainMenuSpritesMax>();
     bn::sprite_ptr _text_background_box = bn::sprite_items::text_background_box.create_sprite(0, 60);
     int _cpu_speed = 1; // TODO save and load last value in file
 protected:

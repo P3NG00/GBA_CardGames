@@ -40,6 +40,8 @@
 const int CardPileMax = 106;
 const int CardPileHandMax = 7;
 const int CardPileSafetyMax = 4;
+const int PlayerMilageSpritesMax = 2;
+const int MainMenuSpritesMax = 13;
 
 bn::optional<bn::sprite_ptr> load_sprite(card_type cardtype, bn::fixed_point position);
 
