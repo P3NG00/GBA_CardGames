@@ -31,6 +31,8 @@ enum card_type
     SafetyExtraTankCoupFourre,
     SafetyPunctureProofCoupFourre,
     SafetyDrivingAceCoupFourre,
+    // card back
+    CardBack,
 };
 
 #endif

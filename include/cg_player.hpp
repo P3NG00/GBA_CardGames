@@ -34,7 +34,7 @@ class player
     bool _turn_done = false;
     int _milage = 0;
 protected:
-    player(bn::fixed_point position, int playfield_offset_y, text_handler& texthandler);
+    player(bn::fixed_point position, int playfield_offset_y, text_handler& texthandler, bool hidden);
     void _play_selected_card();
     void _discard_selected_card(card_pile<CardPileMax>& discard_pile);
     int _playfield_offset_y;

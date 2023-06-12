@@ -1,7 +1,7 @@
 #include "cg_player_computer.hpp"
 
 player_computer::player_computer(bn::fixed_point position, int playfield_offset_y, text_handler& texthandler, bn::fixed selection_time_seconds) :
-    player(position, playfield_offset_y, texthandler),
+    player(position, playfield_offset_y, texthandler, true),
     _selection_timer_frames(seconds_to_frames(selection_time_seconds))
 {
 }

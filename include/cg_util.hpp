@@ -34,6 +34,8 @@
 #include "bn_sprite_items_card_safety_extra_tank_coup_fourre.h"
 #include "bn_sprite_items_card_safety_puncture_proof_coup_fourre.h"
 #include "bn_sprite_items_card_safety_driving_ace_coup_fourre.h"
+// card back
+#include "bn_sprite_items_card_back.h"
 
 #include "cg_card_type.hpp"
 

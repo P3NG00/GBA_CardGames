@@ -1,9 +1,10 @@
 #include "cg_card_pile_display.hpp"
 
 template<int Size>
-card_pile_display<Size>::card_pile_display(bn::fixed_point position, bool centered) :
+card_pile_display<Size>::card_pile_display(bn::fixed_point position, bool centered, bool hidden) :
     _position(position),
-    _centered(centered)
+    _centered(centered),
+    _hidden(hidden)
 {
 }
 
@@ -29,7 +30,8 @@ void card_pile_display<Size>::update_sprites()
     {
         if (_sprites[i].has_value())
             _sprites[i].reset();
-        _sprites[i] = load_sprite(this->get_card_type(i), position);
+        card_type cardtype = _hidden ? card_type::CardBack : this->get_card_type(i);
+        _sprites[i] = load_sprite(cardtype, position);
         position.set_x(position.x() + 16);
     }
     for (int i = this->_cards.size(); i < Size; i++)

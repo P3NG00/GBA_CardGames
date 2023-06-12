@@ -2,7 +2,7 @@
 
 scene_game::scene_game(bn::random& random_obj, text_handler& texthandler, bn::fixed cpu_selection_timer_seconds) :
     _player_input   (bn::fixed_point(0,  70), -34, texthandler),
-    _player_computer(bn::fixed_point(0, -70),  34, texthandler, cpu_selection_timer_seconds) // TODO only show back of opponent's cards
+    _player_computer(bn::fixed_point(0, -70),  34, texthandler, cpu_selection_timer_seconds)
 {
     const int CardTypesAmount = 19;
     const bn::array<bn::pair<int, card_type>, CardTypesAmount> card_type_amounts = {

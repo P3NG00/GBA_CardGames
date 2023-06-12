@@ -16,8 +16,9 @@ class card_pile_display : public card_pile<Size>
     bn::vector<bn::optional<bn::sprite_ptr>, Size> _sprites = bn::vector<bn::optional<bn::sprite_ptr>, Size>(Size, bn::optional<bn::sprite_ptr>());
     bn::fixed_point _position;
     const bool _centered;
+    const bool _hidden;
 public:
-    card_pile_display(bn::fixed_point position, bool centered = false);
+    card_pile_display(bn::fixed_point position, bool centered, bool hidden);
     bn::optional<bn::sprite_ptr> get_sprite(int index);
     bn::fixed_point get_position();
     void update_sprites();

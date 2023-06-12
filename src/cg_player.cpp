@@ -1,8 +1,8 @@
 #include "cg_player.hpp"
 
-player::player(bn::fixed_point position, int playfield_offset_y, text_handler& texthandler) :
-    _pile_display_hand(position, true),
-    _pile_display_safety(position + bn::fixed_point(16, playfield_offset_y)),
+player::player(bn::fixed_point position, int playfield_offset_y, text_handler& texthandler, bool hidden) :
+    _pile_display_hand(position, true, hidden),
+    _pile_display_safety(position + bn::fixed_point(16, playfield_offset_y), false, false),
     _card_display_roll(position + bn::fixed_point(-32, playfield_offset_y)),
     _card_display_speed(position + bn::fixed_point(-16, playfield_offset_y)),
     _playfield_offset_y(playfield_offset_y)

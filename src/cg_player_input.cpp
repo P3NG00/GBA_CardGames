@@ -1,7 +1,7 @@
 #include "cg_player_input.hpp"
 
 player_input::player_input(bn::fixed_point position, int playfield_offset_y, text_handler& texthandler) :
-    player(position, playfield_offset_y, texthandler)
+    player(position, playfield_offset_y, texthandler, false)
 {
     _sprite_card_highlight.set_visible(false);
 }

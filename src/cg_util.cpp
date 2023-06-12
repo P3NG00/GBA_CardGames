@@ -34,6 +34,8 @@ bn::optional<bn::sprite_ptr> load_sprite(card_type cardtype, bn::fixed_point pos
         case card_type::SafetyExtraTankCoupFourre:     return SPRITE(card_safety_extra_tank_coup_fourre);
         case card_type::SafetyPunctureProofCoupFourre: return SPRITE(card_safety_puncture_proof_coup_fourre);
         case card_type::SafetyDrivingAceCoupFourre:    return SPRITE(card_safety_driving_ace_coup_fourre);
+        // card back
+        case card_type::CardBack:                      return SPRITE(card_back);
 
         default: return bn::nullopt;
     }
