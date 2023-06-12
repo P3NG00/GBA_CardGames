@@ -19,7 +19,6 @@
 class player
 {
     bool _handle_play_milage_card(int milage);
-    bool _handle_play_selected_card(player& player);
     void _update_milage_text(text_handler& texthandler);
     // cards in the player's hand
     card_pile_display<CardPileHandMax> _pile_display_hand;
