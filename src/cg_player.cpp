@@ -10,13 +10,6 @@ player::player(bn::fixed_point position, int playfield_offset_y, text_handler& t
     _update_milage_text(texthandler);
 }
 
-void player::_update_milage_text(text_handler& texthandler)
-{
-    _text_milage_sprites.clear();
-    bn::fixed_point text_position = position() + bn::fixed_point(32, _playfield_offset_y);
-    texthandler.generate(text_position, bn::to_string<5>(_milage) + "M", _text_milage_sprites, bn::sprite_text_generator::alignment_type::RIGHT);
-}
-
 bool player::_handle_play_milage_card(int milage)
 {
     // check roll card
@@ -31,7 +24,7 @@ bool player::_handle_play_milage_card(int milage)
     return false;
 }
 
-bool player::_handle_play_selected_card()
+bool player::_handle_play_selected_card(player& other_player)
 {
     card_type cardtype = get_hand_display().get_card_type(_card_index);
     switch (cardtype)
@@ -43,13 +36,20 @@ bool player::_handle_play_selected_card()
         case card_type::Milage100: return _handle_play_milage_card(100);
         case card_type::Milage200: return _handle_play_milage_card(200);
         // hazard cards
-        case card_type::HazardStop:       { /* TODO HazardStop       */ } break;
+        case card_type::HazardStop: {
+            // TODO check hazards and right of way safety
+            if (other_player._card_display_roll.get_card_type() != card_type::RemedyGo)
+                return false;
+            other_player._card_display_roll.update_card_type(cardtype);
+            return true;
+        }
         case card_type::HazardSpeedLimit: { /* TODO HazardSpeedLimit */ } break;
         case card_type::HazardOutOfGas:   { /* TODO HazardOutOfGas   */ } break;
         case card_type::HazardFlatTire:   { /* TODO HazardFlatTire   */ } break;
         case card_type::HazardAccident:   { /* TODO HazardAccident   */ } break;
         // remedy cards
         case card_type::RemedyGo: {
+            // TODO check hazards and right of way safety
             if (_card_display_roll.get_card_type() == card_type::RemedyGo)
                 return false;
             _card_display_roll.update_card_type(cardtype);
@@ -70,10 +70,17 @@ bool player::_handle_play_selected_card()
     return false;
 }
 
-void player::_play_selected_card()
+void player::_update_milage_text(text_handler& texthandler)
+{
+    _text_milage_sprites.clear();
+    bn::fixed_point text_position = position() + bn::fixed_point(32, _playfield_offset_y);
+    texthandler.generate(text_position, bn::to_string<5>(_milage) + "M", _text_milage_sprites, bn::sprite_text_generator::alignment_type::RIGHT);
+}
+
+void player::_play_selected_card(player& other_player)
 {
     // check if card is able to be played
-    if (!_handle_play_selected_card())
+    if (!_handle_play_selected_card(other_player))
         return;
     // remove card from hand and update sprites
     get_hand_display().remove_card_type(_card_index);
@@ -106,7 +113,7 @@ bool player::is_turn_done()
     return _turn_done;
 }
 
-void player::update(bn::random&, card_pile<CardPileMax>&)
+void player::update(bn::random&, card_pile<CardPileMax>&, player&)
 {
 }
 

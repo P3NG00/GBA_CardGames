@@ -6,7 +6,7 @@ player_computer::player_computer(bn::fixed_point position, int playfield_offset_
 {
 }
 
-void player_computer::update(bn::random& random_obj, card_pile<CardPileMax>& discard_pile)
+void player_computer::update(bn::random& random_obj, card_pile<CardPileMax>& discard_pile, player& other_player)
 {
     // check selection timer
     if (_selection_timer > 0)
@@ -19,7 +19,7 @@ void player_computer::update(bn::random& random_obj, card_pile<CardPileMax>& dis
     if (random_obj.get_int() % 4 == 0)
         _discard_selected_card(discard_pile);
     else
-        _play_selected_card();
+        _play_selected_card(other_player);
 }
 
 void player_computer::start_turn()

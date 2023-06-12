@@ -55,7 +55,7 @@ void scene_game::update(bn::random& random_obj, text_handler& texthandler)
         _index_player_last = _index_player_current;
     }
     // update player
-    _players[_index_player_current]->update(random_obj, _pile_discard);
+    _players[_index_player_current]->update(random_obj, _pile_discard, *_players[(_index_player_current + 1) % _players.size()]);
     // move to next turn if player is done
     if (_players[_index_player_current]->is_turn_done())
     {

@@ -18,9 +18,9 @@
 
 class player
 {
-    void _update_milage_text(text_handler& texthandler);
     bool _handle_play_milage_card(int milage);
-    bool _handle_play_selected_card();
+    bool _handle_play_selected_card(player& player);
+    void _update_milage_text(text_handler& texthandler);
     // cards in the player's hand
     card_pile_display<CardPileHandMax> _pile_display_hand;
     // players safety pile
@@ -35,7 +35,7 @@ class player
     int _milage = 0;
 protected:
     player(bn::fixed_point position, int playfield_offset_y, text_handler& texthandler, bool hidden);
-    void _play_selected_card();
+    void _play_selected_card(player& other_player);
     void _discard_selected_card(card_pile<CardPileMax>& discard_pile);
     int _playfield_offset_y;
     int _card_index = 0;
@@ -44,7 +44,7 @@ public:
     bn::fixed_point position();
     card_pile_display<CardPileHandMax>& get_hand_display();
     bool is_turn_done();
-    virtual void update(bn::random& random_obj, card_pile<CardPileMax>& discard_pile);
+    virtual void update(bn::random& random_obj, card_pile<CardPileMax>& discard_pile, player& other_player);
     virtual void start_turn();
     virtual void end_turn(text_handler& texthandler);
 };

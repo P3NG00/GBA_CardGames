@@ -6,7 +6,7 @@ player_input::player_input(bn::fixed_point position, int playfield_offset_y, tex
     _sprite_card_highlight.set_visible(false);
 }
 
-void player_input::update(bn::random&, card_pile<CardPileMax>& discard_pile)
+void player_input::update(bn::random&, card_pile<CardPileMax>& discard_pile, player& other_player)
 {
     // handle moving card selection
     if (bn::keypad::left_pressed())
@@ -28,7 +28,7 @@ void player_input::update(bn::random&, card_pile<CardPileMax>& discard_pile)
     _sprite_card_highlight.set_x(get_hand_display().get_sprite(_card_index).value().x());
 
     if (bn::keypad::a_pressed())
-        _play_selected_card();
+        _play_selected_card(other_player);
     else if (bn::keypad::b_pressed())
         _discard_selected_card(discard_pile);
 }
