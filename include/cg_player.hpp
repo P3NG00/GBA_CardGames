@@ -9,6 +9,7 @@
 #include "bn_string.h"
 #include "bn_vector.h"
 
+#include "cg_card_display.hpp"
 #include "cg_card_pile.hpp"
 #include "cg_card_pile_display.hpp"
 #include "cg_card_type.hpp"
@@ -18,12 +19,18 @@
 class player
 {
     void _update_milage_text(text_handler& texthandler);
+    bool _handle_play_milage_card(int milage);
+    bool _handle_play_selected_card();
     // cards in the player's hand
-    card_pile_display<CardPileHandMax> _pile_hand_display;
-    // most recently played card display
-    bn::optional<bn::sprite_ptr> _sprite_card_played = bn::nullopt;
+    card_pile_display<CardPileHandMax> _pile_display_hand;
+    // players safety pile
+    card_pile_display<CardPileSafetyMax> _pile_display_safety;
+    // players roll card
+    card_display _card_display_roll;
+    // players speed card
+    card_display _card_display_speed;
     // milage text sprites
-    bn::vector<bn::sprite_ptr, 1> _text_milage_sprites = bn::vector<bn::sprite_ptr, 1>(); // TODO make sure size is correct
+    bn::vector<bn::sprite_ptr, 2> _text_milage_sprites = bn::vector<bn::sprite_ptr, 2>(); // TODO make sure size is correct
     bool _turn_done = false;
     int _milage = 0;
 protected:

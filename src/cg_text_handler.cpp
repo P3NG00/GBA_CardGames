@@ -14,5 +14,5 @@ void text_handler::generate(bn::fixed_point& position, const bn::string_view& te
     _text_generator.generate(position, text, text_sprites);
 }
 
-template void text_handler::generate<1>(bn::fixed_point&, const bn::string_view&, bn::vector<bn::sprite_ptr, 1>&, bn::sprite_text_generator::alignment_type);
+template void text_handler::generate<2>(bn::fixed_point&, const bn::string_view&, bn::vector<bn::sprite_ptr, 2>&, bn::sprite_text_generator::alignment_type);
 template void text_handler::generate<13>(int, int, const bn::string_view&, bn::vector<bn::sprite_ptr, 13>&, bn::sprite_text_generator::alignment_type);
