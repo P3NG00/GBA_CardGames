@@ -12,6 +12,10 @@ player::player(bn::fixed_point position, int playfield_offset_y, text_handler& t
 
 bool player::_handle_play_milage_card(int milage)
 {
+    // TODO check hazards and safeties
+    // check speed limit
+    if (_card_display_speed.get_card_type() == card_type::HazardSpeedLimit && milage > 50)
+        return false;
     // check roll card
     if (_card_display_roll.get_card_type() != card_type::RemedyGo)
         return false;
@@ -50,10 +54,15 @@ void player::_play_selected_card(player& other_player)
                 return;
             other_player._card_display_roll.update_card_type(cardtype);
         } break;
-        case card_type::HazardSpeedLimit: { /* TODO HazardSpeedLimit */ } return;
-        case card_type::HazardOutOfGas:   { /* TODO HazardOutOfGas   */ } return;
-        case card_type::HazardFlatTire:   { /* TODO HazardFlatTire   */ } return;
-        case card_type::HazardAccident:   { /* TODO HazardAccident   */ } return;
+        case card_type::HazardSpeedLimit: {
+            // TODO check right of way safety
+            if (other_player._card_display_speed.get_card_type() == card_type::HazardSpeedLimit)
+                return;
+            other_player._card_display_speed.update_card_type(cardtype);
+        } break;
+        case card_type::HazardOutOfGas: { /* TODO HazardOutOfGas   */ return; } break;
+        case card_type::HazardFlatTire: { /* TODO HazardFlatTire   */ return; } break;
+        case card_type::HazardAccident: { /* TODO HazardAccident   */ return; } break;
         // remedy cards
         case card_type::RemedyGo: {
             // TODO check hazards and right of way safety
@@ -61,15 +70,20 @@ void player::_play_selected_card(player& other_player)
                 return;
             _card_display_roll.update_card_type(cardtype);
         } break;
-        case card_type::RemedyEndOfLimit: { /* TODO RemedyEndOfLimit */ } return;
-        case card_type::RemedyGasoline:   { /* TODO RemedyGasoline   */ } return;
-        case card_type::RemedySpareTire:  { /* TODO RemedySpareTire  */ } return;
-        case card_type::RemedyRepairs:    { /* TODO RemedyRepairs    */ } return;
+        case card_type::RemedyEndOfLimit: {
+            // TODO (can EndOfLimit be played if RightOfWay safety is played?)
+            if (_card_display_speed.get_card_type() != card_type::HazardSpeedLimit)
+                return;
+            _card_display_speed.update_card_type(cardtype);
+        } break;
+        case card_type::RemedyGasoline:   { /* TODO RemedyGasoline   */ return; } break;
+        case card_type::RemedySpareTire:  { /* TODO RemedySpareTire  */ return; } break;
+        case card_type::RemedyRepairs:    { /* TODO RemedyRepairs    */ return; } break;
         // safety cards
-        case card_type::SafetyRightOfWay:    { /* TODO SafetyRightOfWay    */ } return;
-        case card_type::SafetyExtraTank:     { /* TODO SafetyExtraTank     */ } return;
-        case card_type::SafetyPunctureProof: { /* TODO SafetyPunctureProof */ } return;
-        case card_type::SafetyDrivingAce:    { /* TODO SafetyDrivingAce    */ } return;
+        case card_type::SafetyRightOfWay:    { /* TODO SafetyRightOfWay    */ return; } break;
+        case card_type::SafetyExtraTank:     { /* TODO SafetyExtraTank     */ return; } break;
+        case card_type::SafetyPunctureProof: { /* TODO SafetyPunctureProof */ return; } break;
+        case card_type::SafetyDrivingAce:    { /* TODO SafetyDrivingAce    */ return; } break;
         default: return;
     }
     // remove card from hand and update sprites
