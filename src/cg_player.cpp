@@ -30,8 +30,8 @@ bool player::_handle_play_milage_card(int milage)
 void player::_update_milage_text(text_handler& texthandler)
 {
     _text_milage_sprites.clear();
-    bn::fixed_point text_position = position() + bn::fixed_point(32, _playfield_offset_y);
-    texthandler.generate(text_position, bn::to_string<5>(_milage) + "M", _text_milage_sprites, bn::sprite_text_generator::alignment_type::RIGHT);
+    bn::fixed_point text_position = position() + bn::fixed_point(0, _playfield_offset_y * bn::fixed(1.5));
+    texthandler.generate(text_position, bn::to_string<5>(_milage) + "M", _text_milage_sprites);
 }
 
 void player::_play_selected_card(player& other_player)
@@ -48,33 +48,49 @@ void player::_play_selected_card(player& other_player)
         case card_type::Milage200: { if (!_handle_play_milage_card(200)) return; } break;
         // hazard cards
         case card_type::HazardStop: {
-            // TODO check hazards and right of way safety
-            if (other_player._card_display_roll.get_card_type() != card_type::RemedyGo)
+            // check right of way safety
+            if (other_player._pile_display_safety.contains(card_type::SafetyRightOfWay))
+                return;
+            // check other player roll card
+            if (other_player._card_display_roll.get_card_type().has_value() &&
+                other_player._card_display_roll.get_card_type() != card_type::RemedyGo)
                 return;
             other_player._card_display_roll.update_card_type(cardtype);
         } break;
         case card_type::HazardSpeedLimit: {
-            // TODO check right of way safety
+            // check right of way safety
+            if (other_player._pile_display_safety.contains(card_type::SafetyRightOfWay))
+                return;
+            // check other player speed limit card
             if (other_player._card_display_speed.get_card_type() == card_type::HazardSpeedLimit)
                 return;
             other_player._card_display_speed.update_card_type(cardtype);
         } break;
         case card_type::HazardOutOfGas: {
-            // TODO check SafetyExtraTank
+            // check extra tank safety
+            if (other_player._pile_display_safety.contains(card_type::SafetyExtraTank))
+                return;
+            // check other player roll card
             if (other_player._card_display_roll.get_card_type().has_value() &&
                 other_player._card_display_roll.get_card_type() != card_type::RemedyGo)
                 return;
             other_player._card_display_roll.update_card_type(cardtype);
         } break;
         case card_type::HazardFlatTire: {
-            // TODO check SafetyPunctureProof
+            // check puncture proof safety
+            if (other_player._pile_display_safety.contains(card_type::SafetyPunctureProof))
+                return;
+            // check other player roll card
             if (other_player._card_display_roll.get_card_type().has_value() &&
                 other_player._card_display_roll.get_card_type() != card_type::RemedyGo)
                 return;
             other_player._card_display_roll.update_card_type(cardtype);
         } break;
         case card_type::HazardAccident: {
-            // TODO check SafetyRightOfWay
+            // check driving ace safety
+            if (other_player._pile_display_safety.contains(card_type::SafetyDrivingAce))
+                return;
+            // check other player roll card
             if (other_player._card_display_roll.get_card_type().has_value() &&
                 other_player._card_display_roll.get_card_type() != card_type::RemedyGo)
                 return;
@@ -82,7 +98,9 @@ void player::_play_selected_card(player& other_player)
         } break;
         // remedy cards
         case card_type::RemedyGo: {
-            // TODO (can Go be played if RightOfWay safety is played?)
+            // check right of way safety
+            if (_pile_display_safety.contains(card_type::SafetyRightOfWay))
+                return;
             // check hazards & roll card
             if (_card_display_roll.get_card_type() == card_type::HazardOutOfGas ||
                 _card_display_roll.get_card_type() == card_type::HazardFlatTire ||
@@ -92,39 +110,103 @@ void player::_play_selected_card(player& other_player)
             _card_display_roll.update_card_type(cardtype);
         } break;
         case card_type::RemedyEndOfLimit: {
-            // TODO (can EndOfLimit be played if RightOfWay safety is played?)
+            // check right of way safety
+            if (_pile_display_safety.contains(card_type::SafetyRightOfWay))
+                return;
+            // check speed limit card
             if (_card_display_speed.get_card_type() != card_type::HazardSpeedLimit)
                 return;
             _card_display_speed.update_card_type(cardtype);
         } break;
         case card_type::RemedyGasoline: {
-            // TODO (can Gasoline be played if ExtraTank safety is played?)
+            // check extra tank safety
+            if (_pile_display_safety.contains(card_type::SafetyExtraTank))
+                return;
+            // check player roll card
             if (_card_display_roll.get_card_type() != card_type::HazardOutOfGas)
                 return;
-            _card_display_roll.update_card_type(cardtype);
+            // update card type
+            if (_pile_display_safety.contains(card_type::SafetyRightOfWay))
+                _card_display_roll.update_card_type(card_type::RemedyGo);
+            else
+                _card_display_roll.update_card_type(cardtype);
         } break;
         case card_type::RemedySpareTire: {
-            // TODO (can SpareTire be played if PunctureProof safety is played?)
+            // check puncture proof safety
+            if (_pile_display_safety.contains(card_type::SafetyPunctureProof))
+                return;
+            // check player roll card
             if (_card_display_roll.get_card_type() != card_type::HazardFlatTire)
                 return;
-            _card_display_roll.update_card_type(cardtype);
+            // update card type
+            if (_pile_display_safety.contains(card_type::SafetyRightOfWay))
+                _card_display_roll.update_card_type(card_type::RemedyGo);
+            else
+                _card_display_roll.update_card_type(cardtype);
         } break;
         case card_type::RemedyRepairs: {
-            // TODO (can Repairs be played if Accident safety is played?)
+            // check driving ace safety
+            if (_pile_display_safety.contains(card_type::SafetyDrivingAce))
+                return;
+            // check player roll card
             if (_card_display_roll.get_card_type() != card_type::HazardAccident)
                 return;
-            _card_display_roll.update_card_type(cardtype);
+            // update card type
+            if (_pile_display_safety.contains(card_type::SafetyRightOfWay))
+                _card_display_roll.update_card_type(card_type::RemedyGo);
+            else
+                _card_display_roll.update_card_type(cardtype);
         } break;
         // safety cards
-        case card_type::SafetyRightOfWay:    { /* TODO SafetyRightOfWay    */ return; } break;
-        case card_type::SafetyExtraTank:     { /* TODO SafetyExtraTank     */ return; } break;
-        case card_type::SafetyPunctureProof: { /* TODO SafetyPunctureProof */ return; } break;
-        case card_type::SafetyDrivingAce:    { /* TODO SafetyDrivingAce    */ return; } break;
+        // TODO implement coup-fourré
+        case card_type::SafetyRightOfWay: {
+            // remove speed limit
+            _card_display_speed.update_card_type(bn::nullopt);
+            // apply right of way
+            if (_card_display_roll.get_card_type() == card_type::HazardStop ||
+                _card_display_roll.get_card_type() == card_type::RemedyGasoline ||
+                _card_display_roll.get_card_type() == card_type::RemedySpareTire ||
+                _card_display_roll.get_card_type() == card_type::RemedyRepairs)
+            {
+                _card_display_roll.update_card_type(card_type::RemedyGo);
+            }
+            _pile_display_safety.add_card_type(cardtype);
+        } break;
+        case card_type::SafetyExtraTank: {
+            if (_card_display_roll.get_card_type() == card_type::HazardOutOfGas)
+            {
+                if (_pile_display_safety.contains(card_type::SafetyRightOfWay))
+                    _card_display_roll.update_card_type(card_type::RemedyGo);
+                else
+                    _card_display_roll.update_card_type(RemedyGasoline);
+            }
+            _pile_display_safety.add_card_type(cardtype);
+        } break;
+        case card_type::SafetyPunctureProof: {
+            if (_card_display_roll.get_card_type() == card_type::HazardFlatTire)
+            {
+                if (_pile_display_safety.contains(card_type::SafetyRightOfWay))
+                    _card_display_roll.update_card_type(card_type::RemedyGo);
+                else
+                    _card_display_roll.update_card_type(RemedySpareTire);
+            }
+            _pile_display_safety.add_card_type(cardtype);
+        } break;
+        case card_type::SafetyDrivingAce: {
+            if (_card_display_roll.get_card_type() == card_type::HazardAccident)
+            {
+                if (_pile_display_safety.contains(card_type::SafetyRightOfWay))
+                    _card_display_roll.update_card_type(card_type::RemedyGo);
+                else
+                    _card_display_roll.update_card_type(RemedyRepairs);
+            }
+            _pile_display_safety.add_card_type(cardtype);
+        } break;
+
         default: return;
     }
     // remove card from hand and update sprites
     get_hand_display().remove_card_type(_card_index);
-    get_hand_display().update_sprites();
     // update turn status
     _turn_done = true;
 }
@@ -133,7 +215,6 @@ void player::_discard_selected_card(card_pile<CardPileMax>& discard_pile)
 {
     card_type cardtype = get_hand_display().get_card_type(_card_index);
     get_hand_display().remove_card_type(_card_index);
-    get_hand_display().update_sprites();
     discard_pile.add_card_type(cardtype);
     _turn_done = true;
 }

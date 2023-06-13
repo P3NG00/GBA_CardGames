@@ -21,6 +21,17 @@ int card_pile<Size>::count()
 }
 
 template<int Size>
+bool card_pile<Size>::contains(card_type cardtype)
+{
+    for (int i = 0; i < count(); i++)
+    {
+        if (get_card_type(i) == cardtype)
+            return true;
+    }
+    return false;
+}
+
+template<int Size>
 template<int OtherSize>
 void card_pile<Size>::deal_card_to(card_pile<OtherSize>& other_pile)
 {
@@ -63,4 +74,5 @@ void card_pile<Size>::shuffle(bn::random& random_obj)
 
 template class card_pile<CardPileMax>;       // max deck size
 template class card_pile<CardPileHandMax>;   // max hand size
+template class card_pile<CardPileSafetyMax>; // max safety pile size
 template void card_pile<CardPileMax>::deal_card_to<CardPileHandMax>(card_pile<CardPileHandMax>&);

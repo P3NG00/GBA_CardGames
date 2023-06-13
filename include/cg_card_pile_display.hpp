@@ -21,6 +21,8 @@ public:
     card_pile_display(bn::fixed_point position, bool centered, bool hidden);
     bn::optional<bn::sprite_ptr> get_sprite(int index);
     bn::fixed_point get_position();
+    void add_card_type(card_type cardtype) override;
+    void remove_card_type(int index) override;
     void update_sprites();
 };
 

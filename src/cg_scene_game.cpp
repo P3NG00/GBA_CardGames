@@ -1,5 +1,7 @@
 #include "cg_scene_game.hpp"
 
+// TODO add ability to pause game
+
 scene_game::scene_game(bn::random& random_obj, text_handler& texthandler, bn::fixed cpu_selection_timer_seconds) :
     _player_input   (bn::fixed_point(0,  70), -34, texthandler),
     _player_computer(bn::fixed_point(0, -70),  34, texthandler, cpu_selection_timer_seconds)

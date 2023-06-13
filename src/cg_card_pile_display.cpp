@@ -21,6 +21,20 @@ bn::fixed_point card_pile_display<Size>::get_position()
 }
 
 template<int Size>
+void card_pile_display<Size>::add_card_type(card_type cardtype)
+{
+    card_pile<Size>::add_card_type(cardtype);
+    update_sprites();
+}
+
+template<int Size>
+void card_pile_display<Size>::remove_card_type(int index)
+{
+    card_pile<Size>::remove_card_type(index);
+    update_sprites();
+}
+
+template<int Size>
 void card_pile_display<Size>::update_sprites()
 {
     bn::fixed_point position = get_position();

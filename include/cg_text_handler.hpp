@@ -16,22 +16,9 @@ class text_handler
 {
     bn::sprite_text_generator _text_generator = bn::sprite_text_generator(common::variable_8x16_sprite_font);
 public:
-    template<int Size>
-    void generate(
-        int x,
-        int y,
-        const bn::string_view& text,
-        bn::vector<bn::sprite_ptr, Size>& text_sprites,
-        bn::sprite_text_generator::alignment_type alignment = bn::sprite_text_generator::alignment_type::CENTER
-    );
-    template<int Size>
-    void generate(
-        bn::fixed_point& position,
-        const bn::string_view& text,
-        bn::vector<bn::sprite_ptr, Size>& text_sprites,
-        bn::sprite_text_generator::alignment_type alignment = bn::sprite_text_generator::alignment_type::CENTER
-    );
-    void clear();
+    text_handler();
+    template<int Size> void generate(int x, int y, const bn::string_view& text, bn::vector<bn::sprite_ptr, Size>& text_sprites);
+    template<int Size> void generate(bn::fixed_point& position, const bn::string_view& text, bn::vector<bn::sprite_ptr, Size>& text_sprites);
 };
 
 #endif

@@ -17,12 +17,14 @@ class card_pile
 protected:
     bn::vector<card_type, Size> _cards = bn::vector<card_type, Size>();
 public:
+    virtual ~card_pile() = default;
     bn::optional<card_type> get_top_card_type();
     card_type get_card_type(int index);
     int count();
+    bool contains(card_type cardtype);
     template<int OtherSize> void deal_card_to(card_pile<OtherSize>& other_pile);
-    void add_card_type(card_type cardtype);
-    void remove_card_type(int index);
+    virtual void add_card_type(card_type cardtype);
+    virtual void remove_card_type(int index);
     void clear();
     void shuffle(bn::random& random_obj);
 };
