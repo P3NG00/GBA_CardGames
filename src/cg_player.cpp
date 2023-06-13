@@ -66,8 +66,20 @@ void player::_play_selected_card(player& other_player)
                 return;
             other_player._card_display_roll.update_card_type(cardtype);
         } break;
-        case card_type::HazardFlatTire: { /* TODO HazardFlatTire */ return; } break;
-        case card_type::HazardAccident: { /* TODO HazardAccident */ return; } break;
+        case card_type::HazardFlatTire: {
+            // TODO check SafetyPunctureProof
+            if (other_player._card_display_roll.get_card_type().has_value() &&
+                other_player._card_display_roll.get_card_type() != card_type::RemedyGo)
+                return;
+            other_player._card_display_roll.update_card_type(cardtype);
+        } break;
+        case card_type::HazardAccident: {
+            // TODO check SafetyRightOfWay
+            if (other_player._card_display_roll.get_card_type().has_value() &&
+                other_player._card_display_roll.get_card_type() != card_type::RemedyGo)
+                return;
+            other_player._card_display_roll.update_card_type(cardtype);
+        } break;
         // remedy cards
         case card_type::RemedyGo: {
             // TODO (can Go be played if RightOfWay safety is played?)
@@ -85,14 +97,24 @@ void player::_play_selected_card(player& other_player)
                 return;
             _card_display_speed.update_card_type(cardtype);
         } break;
-        case card_type::RemedyGasoline:  {
+        case card_type::RemedyGasoline: {
             // TODO (can Gasoline be played if ExtraTank safety is played?)
             if (_card_display_roll.get_card_type() != card_type::HazardOutOfGas)
                 return;
             _card_display_roll.update_card_type(cardtype);
         } break;
-        case card_type::RemedySpareTire: { /* TODO RemedySpareTire */ return; } break;
-        case card_type::RemedyRepairs:   { /* TODO RemedyRepairs   */ return; } break;
+        case card_type::RemedySpareTire: {
+            // TODO (can SpareTire be played if PunctureProof safety is played?)
+            if (_card_display_roll.get_card_type() != card_type::HazardFlatTire)
+                return;
+            _card_display_roll.update_card_type(cardtype);
+        } break;
+        case card_type::RemedyRepairs: {
+            // TODO (can Repairs be played if Accident safety is played?)
+            if (_card_display_roll.get_card_type() != card_type::HazardAccident)
+                return;
+            _card_display_roll.update_card_type(cardtype);
+        } break;
         // safety cards
         case card_type::SafetyRightOfWay:    { /* TODO SafetyRightOfWay    */ return; } break;
         case card_type::SafetyExtraTank:     { /* TODO SafetyExtraTank     */ return; } break;
