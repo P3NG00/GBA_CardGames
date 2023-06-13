@@ -3,6 +3,7 @@
 
 #include "bn_fixed.h"
 #include "bn_fixed_point.h"
+#include "bn_keypad.h"
 #include "bn_optional.h"
 #include "bn_random.h"
 

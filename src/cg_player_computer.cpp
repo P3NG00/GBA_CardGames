@@ -1,7 +1,7 @@
 #include "cg_player_computer.hpp"
 
 player_computer::player_computer(bn::fixed_point position, int playfield_offset_y, text_handler& texthandler, bn::fixed selection_time_seconds) :
-    player(position, playfield_offset_y, texthandler, true),
+    player(position, playfield_offset_y, texthandler, !bn::keypad::select_held() || !bn::keypad::l_held() || !bn::keypad::r_held()), // TODO remove, testing only - able to see opponent's hand with Select+LShoulder+RShoulder
     _selection_timer_frames(seconds_to_frames(selection_time_seconds))
 {
 }
