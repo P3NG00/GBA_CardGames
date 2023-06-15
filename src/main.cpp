@@ -11,6 +11,8 @@ int main()
     bn::random random_obj = bn::random();
     // text handler
     text_handler texthandler = text_handler();
+    // play music
+    bn::music_items::sans.play(0.5, true);
 
     // setup main menu scene
     bn::optional<scene_main_menu> scene_main_menu_obj = scene_main_menu(texthandler);
