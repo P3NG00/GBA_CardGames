@@ -24,3 +24,5 @@ TODO 'player display' will only display the cards of the current player. the oth
 TODO implement vertical display for player hands
 TODO display current player index somewhere on screen
 TODO fill names with 'Player x' with x being the player index from 1-4 (make able to display custom names later)
+
+// TODO add sound effects when selecting and playing cards
