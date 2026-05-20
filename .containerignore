@@ -1,0 +1,7 @@
+.git/
+graphics_raw/
+.containerignore
+.gitignore
+Containerfile
+run.sh
+TODO.txt

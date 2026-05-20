@@ -27,14 +27,14 @@
 #---------------------------------------------------------------------------------------------------------------------
 TARGET      :=  $(notdir $(CURDIR))
 BUILD       :=  build
-LIBBUTANO   :=  ../../butano/butano
+LIBBUTANO   :=  ../butano/butano
 PYTHON      :=  python
-SOURCES     :=  src ../../butano/common/src
-INCLUDES    :=  include ../../butano/common/include
+SOURCES     :=  src ../butano/common/src
+INCLUDES    :=  include ../butano/common/include
 DATA        :=
-GRAPHICS    :=  graphics ../../butano/common/graphics
-AUDIO       :=  audio ../../butano/common/audio
-DMGAUDIO    :=  ../../butano/common/dmg_audio
+GRAPHICS    :=  graphics ../butano/common/graphics
+AUDIO       :=  audio ../butano/common/audio
+DMGAUDIO    :=  ../butano/common/dmg_audio
 ROMTITLE    :=  Card Games
 ROMCODE     :=  SBTP
 USERFLAGS   :=
